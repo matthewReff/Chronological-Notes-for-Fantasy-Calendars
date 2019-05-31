@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.28922.388
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tempDisplay", "temp\tempDisplay.csproj", "{2CDDEC38-745C-49CE-BBE6-37239A11D4AB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TempDisplay", "temp\TempDisplay.csproj", "{2CDDEC38-745C-49CE-BBE6-37239A11D4AB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dataAccess", "dataAccess\dataAccess.csproj", "{74C2B8DC-747C-466C-A5AA-998B60ACA25B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccess", "dataAccess\DataAccess.csproj", "{74C2B8DC-747C-466C-A5AA-998B60ACA25B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataStructures", "DataStructures\DataStructures.csproj", "{140A027B-3270-45C0-87A4-7421EC15A5D2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataStructures", "DataStructures\DataStructures.csproj", "{140A027B-3270-45C0-87A4-7421EC15A5D2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -2,8 +2,5 @@
 
 namespace dataAccess
 {
-    class Program
-    {
-        
-    }
+   
 }
