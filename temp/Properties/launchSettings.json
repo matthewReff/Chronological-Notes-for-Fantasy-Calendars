@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "TempDisplay": {
+      "commandName": "Project",
+      "commandLineArgs": "C:\\Users\\Geniusammyr\\source\\repos\\Chronological-Notes-for-Fantasy-Calendars\\dataAccess\\validNormalTestData.xml"
+    }
+  }
+}
