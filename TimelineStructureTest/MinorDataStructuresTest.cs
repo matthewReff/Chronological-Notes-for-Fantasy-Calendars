@@ -15,7 +15,7 @@ namespace TimelineStructureTest
             private TestContext _testContext;
 
             [TestMethod]
-            public void BlankInitializeTime_InvalidValues()
+            public void BlankInitializeTime_GetInvalidValues()
             {
                 //arrange
                 Time time = new Time();
@@ -29,7 +29,7 @@ namespace TimelineStructureTest
             }
 
             [TestMethod]
-            public void ValuedInitializeTime_ValidValues()
+            public void ValuedInitializeTime_GetValidValues()
             {
                 //arrange
                 Time time = new Time(0, 0);
@@ -43,7 +43,7 @@ namespace TimelineStructureTest
             }
 
             [TestMethod]
-            public void BlankInitializeDate_InvalidValues()
+            public void BlankInitializeDate_GetInvalidValues()
             {
                 //arrange
                 Date date = new Date();
@@ -58,7 +58,7 @@ namespace TimelineStructureTest
             }
 
             [TestMethod]
-            public void ValuedInitializeDate_ValidValues()
+            public void ValuedInitializeDate_GetValidValues()
             {
                 //arrange
                 Time time = new Time(0, 0);
