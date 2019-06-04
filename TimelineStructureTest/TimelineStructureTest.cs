@@ -9,6 +9,66 @@ namespace TimelineStructureTest
         public TestContext TestContext { get; set; }
         private TestContext _testContext;
 
+        #region Build Notes
+        Time timeInvalidMinutes;
+        Time timeInvalidMHours;
+        Time timeValidEarly;
+        Time timeValidLate;
+
+        Date dateInvalidTime;
+        Date dateInvalidYear;
+        Date dateInvalidMonth;
+        Date dateInvalidDay;
+        Date dateValidEarly;
+        Date dateValidLate;
+
+        string titleFull;
+        string titleEmpty;
+
+        string bodyFull;
+        string bodyEmpty;
+
+
+        Note noteValidEarly; 
+        Note noteValidLate;
+        Note noteInvalidTime;
+        Note noteInvalidDate;
+        Note noteInvalidNoTitle;
+        Note noteValidNoBody;
+
+
+        [TestInitialize]
+        public void SetUp()
+        { 
+            timeInvalidMinutes = new Time(-1, 0);
+            timeInvalidMHours = new Time(0, -1);
+            timeValidEarly = new Time(0, 0);
+            timeValidLate = new Time(1, 1);
+
+            dateInvalidTime = new Date(1, 1, 1, timeInvalidMinutes);
+            dateInvalidYear = new Date(-1, 1, 1, timeValidEarly);
+            dateInvalidMonth = new Date(1, -1, 1, timeValidEarly);
+            dateInvalidDay = new Date(1, 1, -1, timeValidEarly);
+            dateValidEarly = new Date(1, 1, 1, timeValidEarly);
+            dateValidLate = new Date(2, 2, 2, timeValidEarly);
+
+            titleFull = "NON EMPTY TITLE";
+            titleEmpty = string.Empty;
+
+            bodyFull = "NON EMPTY CONTENT";
+            bodyEmpty = string.Empty;
+
+
+            noteValidEarly = new Note(dateValidEarly, titleFull, bodyFull);
+            noteValidLate = new Note(dateValidEarly, titleFull, bodyFull);
+            noteInvalidTime = new Note(dateInvalidTime, titleFull, bodyFull);
+            noteInvalidDate = new Note(dateInvalidYear, titleFull, bodyFull);
+            noteInvalidNoTitle = new Note(dateValidEarly, titleEmpty, bodyFull);
+            noteValidNoBody = new Note(dateValidEarly, titleFull, bodyEmpty);
+        }
+
+        #endregion
+
         [TestMethod]
         public void InitializeTimelineTest()
         {
@@ -24,16 +84,11 @@ namespace TimelineStructureTest
         public void AddTimeline_ValidNormalTest()
         {
             //arrange
-            Time time = new Time(0, 0);
-            Date date = new Date(1, 1, 1, time);
-            string headline = "AAAAA";
-            string body = "BBBBBBB";
-            Note note = new Note(date, headline, body);
             Timeline timeLine = new Timeline();
 
             //act
-            bool succeded = timeLine.Add(note);
-            TestContext.WriteLine(note.ToString());
+            bool succeded = timeLine.Add(noteValidEarly);
+            TestContext.WriteLine(noteValidEarly.ToString());
 
             //assert
             Assert.IsTrue(succeded);
@@ -43,16 +98,11 @@ namespace TimelineStructureTest
         public void AddTimeline_ValidNoBodyTest()
         {
             //arrange
-            Time time = new Time(0, 0);
-            Date date = new Date(1, 1, 1, time);
-            string headline = "AAAAA";
-            string body = "";
-            Note note = new Note(date, headline, body);
             Timeline timeLine = new Timeline();
 
             //act
-            bool succeded = timeLine.Add(note);
-            TestContext.WriteLine(note.ToString());
+            bool succeded = timeLine.Add(noteValidNoBody);
+            TestContext.WriteLine(noteValidNoBody.ToString());
 
             //assert
             Assert.IsTrue(succeded);
@@ -64,23 +114,13 @@ namespace TimelineStructureTest
         {
             //arrange
             Timeline timeLine = new Timeline();
-            Time time1 = new Time(0, 0);
-            Date date1 = new Date(1, 1, 1, time1);
-            string headline1 = "AAAAAAAAA";
-            string body1 = "CCCCCC";
-            Note note1 = new Note(date1, headline1, body1);
-
-            Time time2 = new Time(1, 1);
-            Date date2 = new Date(1, 1, 1, time2);
-            string headline2 = "AAAAA";
-            string body2 = "CCCCCC";
-            Note note2 = new Note(date2, headline2, body2);
+            
 
             //act
-            timeLine.Add(note1);
-            timeLine.Add(note2);
-            TestContext.WriteLine(note1.ToString());
-            TestContext.WriteLine(note2.ToString());
+            timeLine.Add(noteValidEarly);
+            timeLine.Add(noteValidLate);
+            TestContext.WriteLine(noteValidEarly.ToString());
+            TestContext.WriteLine(noteValidLate.ToString());
 
             //assert
         }
@@ -90,23 +130,12 @@ namespace TimelineStructureTest
         {
             //arrange
             Timeline timeLine = new Timeline();
-            Time time1 = new Time(0, 0);
-            Date date1 = new Date(1, 1, 1, time1);
-            string headline1 = "AAAAAAAAA";
-            string body1 = "CCCCCC";
-            Note note1 = new Note(date1, headline1, body1);
-
-            Time time2 = new Time(1, 1);
-            Date date2 = new Date(1, 1, 1, time2);
-            string headline2 = "AAAAA";
-            string body2 = "CCCCCC";
-            Note note2 = new Note(date2, headline2, body2);
 
             //act
-            timeLine.Add(note2);
-            timeLine.Add(note1);
-            TestContext.WriteLine(note2.ToString());
-            TestContext.WriteLine(note1.ToString());
+            timeLine.Add(noteValidLate);
+            timeLine.Add(noteValidEarly);
+            TestContext.WriteLine(noteValidLate.ToString());
+            TestContext.WriteLine(noteValidEarly.ToString());
 
             //assert
         }
@@ -116,15 +145,10 @@ namespace TimelineStructureTest
         {
             //arrange
             Timeline timeLine = new Timeline();
-            Time time = new Time(0, 0);
-            Date date = new Date(-1, -2, -3, time);
-            string headline = "BBBBB";
-            string body = "CCCCCC";
-            Note note = new Note(date, headline, body);
 
             //act
-            bool succeded = timeLine.Add(note);
-            TestContext.WriteLine(note.ToString());
+            bool succeded = timeLine.Add(noteInvalidDate);
+            TestContext.WriteLine(noteInvalidDate.ToString());
 
 
             //assert
@@ -136,16 +160,10 @@ namespace TimelineStructureTest
         {
             //arrange
             Timeline timeLine = new Timeline();
-            Time time = new Time(0, 0);
-            Date date = new Date(-1, -2, -3, time);
-            string headline = "BBBBB";
-            string body = "CCCCCC";
-            Note note = new Note(date, headline, body);
-
 
             //act
-            bool succeded = timeLine.Add(note);
-            TestContext.WriteLine(note.ToString());
+            bool succeded = timeLine.Add(noteInvalidTime);
+            TestContext.WriteLine(noteInvalidTime.ToString());
 
             //assert
             Assert.IsFalse(succeded);
@@ -156,15 +174,10 @@ namespace TimelineStructureTest
         {
             //arrange
             Timeline timeLine = new Timeline();
-            Time time = new Time(0, 0);
-            Date date = new Date(1, 1, 1, time);
-            string headline = "";
-            string body = "CCCCCC";
-            Note note = new Note(date, headline, body);
 
             //act
-            bool succeded = timeLine.Add(note);
-            TestContext.WriteLine(note.ToString());
+            bool succeded = timeLine.Add(noteInvalidNoTitle);
+            TestContext.WriteLine(noteInvalidNoTitle.ToString());
 
             //assert
             Assert.IsFalse(succeded);
