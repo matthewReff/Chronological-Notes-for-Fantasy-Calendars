@@ -99,11 +99,11 @@ namespace DataStructures
         public override string ToString()
         {
             string outputString = string.Empty;
-            outputString += "Day: " + day.ToString();
+            outputString += "Year: " + year.ToString();
             outputString += "\n";
             outputString += "Month: " + month.ToString();
             outputString += "\n";
-            outputString += "Year: " + year.ToString();
+            outputString += "Day: " + day.ToString();
             outputString += "\n";
             outputString += time.ToString();
 
@@ -208,7 +208,7 @@ namespace DataStructures
 
         public static bool operator >(Note left, Note right)
         {
-            return left.date < right.date;
+            return left.date > right.date;
         }
 
         public static bool operator ==(Note left, Note right)
@@ -232,10 +232,29 @@ namespace DataStructures
 
     }
 
-    public class Timeline : IEnumerable //, ICollection
+    public class Timeline : IEnumerable, ICollection
     {
 
         private LinkedList<Note> timelineList;
+        private int _count = 0;
+
+        public int Count
+        {
+            get
+            {
+                return _count;
+            }
+        }
+
+        public bool IsSynchronized
+        {
+            get
+            {
+                return true; //TODO
+            }
+        }
+
+        public object SyncRoot => throw new NotImplementedException(); //TODO
 
         public IEnumerator GetEnumerator()
         {
@@ -250,16 +269,65 @@ namespace DataStructures
         public bool Add(Note note)
         {
             bool additonIsValid = IsValidNote(note);
-
-            //big bad refactor later
+            LinkedListNode<Note> currentNode = timelineList.First;
+            
             if(additonIsValid)
             {
-                timelineList.AddFirst(note);
+                if (Count == 0)
+                {
+                    timelineList.AddFirst(note);
+                }
+                else
+                {
+                    while(currentNode != timelineList.Last && note > currentNode.Value)
+                    {
+                         currentNode = currentNode.Next;
+                    }
+                    if (currentNode == timelineList.Last && note > currentNode.Value)
+                    {
+                            timelineList.AddLast(note);
+                    }
+                    else
+                    {
+                        timelineList.AddBefore(currentNode, note);
+                    }
+                }
+                _count++;
             }
-
 
             return additonIsValid;
         }
+
+        public bool Remove(Note note)
+        {
+            if(Count == 0)
+            {
+                return false;
+            }
+
+            bool noteFound = false;
+            LinkedListNode<Note> currentNode = timelineList.First;
+            foreach (Note listNote in timelineList)
+            {
+                if(listNote == note)
+                {
+                    noteFound = true;
+                }
+                if(!noteFound)
+                {
+                    currentNode = currentNode.Next;
+                }
+            }
+
+            if(noteFound)
+            {
+                timelineList.Remove(currentNode);
+                _count--;
+            }
+
+            return noteFound;
+        }
+
 
         protected bool IsValidNote(Note note)
         {
@@ -291,6 +359,27 @@ namespace DataStructures
             return true;
         }
 
+        public void CopyTo(Array array, int index)
+        {
+            List<Note> noteList = new List<Note>();
+            foreach(Note note in timelineList)
+            {
+                noteList.Add(note);
+            }
+            noteList.ToArray().CopyTo(array, index);
+        }
+
+        public override string ToString()
+        {
+            string outputString = string.Empty;
+            outputString += "Timeline:\n\n";
+            foreach(Note note in timelineList)
+            {
+                outputString += note.ToString() + "\n\n";
+            }
+
+            return outputString;
+        }
 
 
         class TimelineEnumerator : IEnumerator
