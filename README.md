@@ -4,14 +4,14 @@ Made as a request for a friend who wanted a way to keep track of the timeline fo
 
 Planned Features:
 
-⋅⋅* Arbitrary Calandars
+>Arbitrary Calandars
  
-  Notes assigned to a given date/time
+>Notes assigned to a given date/time
   
-  Notes viewable on the calandar
+>Notes viewable on the calandar
   
-  Scrolling timeline with voluntary jump to specific times
+>Scrolling timeline with voluntary jump to specific times
   
-  Reoccuring days (Annual Holidays, Etc.)
+>Reoccuring days (Annual Holidays, Etc.)
   
 >Season/Lunar Cycle/Etc. Display when viewing a day
