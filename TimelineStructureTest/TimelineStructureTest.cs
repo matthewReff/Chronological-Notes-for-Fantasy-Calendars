@@ -3,7 +3,7 @@ using DataStructures;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace TimelineStructureTest
+namespace TimelineStructuresTests
 {
     [TestClass]
     public class TimelineStructureTest
@@ -323,7 +323,7 @@ namespace TimelineStructureTest
         }
 
         [TestMethod]
-        public void RemoveTimeline_UpdateCountTest()
+        public void RemoveTimeline_UpdateCountNoRemovalTest()
         {
             //arrange
             Timeline timeline = new Timeline();
@@ -355,6 +355,39 @@ namespace TimelineStructureTest
             Assert.IsFalse(succeded);
         }
 
+        #endregion
+
+        #region Find Tests
+        [TestMethod]
+        public void FindTimeline_ValidNoteTest()
+        {
+            //arrange
+            Timeline timeline = new Timeline();
+            timeline.Add(noteValidEarly);
+            LinkedListNode<Note> foundNode = null;
+
+            //act
+            foundNode = timeline.Find(noteValidEarly);
+            TestContext.WriteLine(timeline.ToString());
+
+            //assert
+            Assert.AreNotEqual(null, foundNode);
+        }
+
+        public void FindTimeline_InvalidNoteTest()
+        {
+            //arrange
+            Timeline timeline = new Timeline();
+            timeline.Add(noteValidEarly);
+            LinkedListNode<Note> foundNode = null;
+
+            //act
+            foundNode = timeline.Find(noteValidMiddle);
+            TestContext.WriteLine(timeline.ToString());
+
+            //assert
+            Assert.AreEqual(null, foundNode);
+        }
         #endregion
     }
 

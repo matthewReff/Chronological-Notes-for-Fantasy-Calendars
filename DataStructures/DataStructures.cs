@@ -3,12 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 
-[assembly: InternalsVisibleTo("TimelineStructureTest")]
+[assembly: InternalsVisibleTo("Unit Tests")]
 
 namespace DataStructures
 {
-
-
     public class Time
     {
         public int hours;
@@ -328,8 +326,12 @@ namespace DataStructures
             return noteFound;
         }
 
+        internal LinkedListNode<Note> Find(Note note)
+        {
+            return timelineList.Find(note);
+        }
 
-        protected bool IsValidNote(Note note)
+        internal bool IsValidNote(Note note)
         {
             if (note.date.day <= 0)
             {

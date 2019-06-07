@@ -1,7 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using DataStructures;
 
-namespace TimelineStructureTest
+namespace MinorDataStructuresTests
 {
     class MinorDataStructuresTest
     {
@@ -13,34 +13,6 @@ namespace TimelineStructureTest
         {
             public TestContext TestContext { get; set; }
             private TestContext _testContext;
-
-            [TestMethod]
-            public void BlankInitializeTime_GetInvalidValues()
-            {
-                //arrange
-                Time time = new Time();
-
-                //act
-                TestContext.WriteLine(time.ToString());
-
-                //assert
-                Assert.IsTrue(time.hours < 0 || time.hours == int.MaxValue);
-                Assert.IsTrue(time.minutes < 0 || time.minutes == int.MaxValue);
-            }
-
-            [TestMethod]
-            public void ValuedInitializeTime_GetValidValues()
-            {
-                //arrange
-                Time time = new Time(0, 0);
-
-                //act
-                TestContext.WriteLine(time.ToString());
-
-                //assert
-                Assert.IsTrue(time.hours == 0);
-                Assert.IsTrue(time.minutes == 0);
-            }
 
             [TestMethod]
             public void BlankInitializeDate_GetInvalidValues()
@@ -73,5 +45,42 @@ namespace TimelineStructureTest
                 Assert.IsTrue(date.year == 1 );
             }
         }
+
+        [TestClass]
+
+        public class TimeTests
+        {
+            public TestContext TestContext { get; set; }
+            private TestContext _testContext;
+
+            [TestMethod]
+            public void BlankInitializeTime_GetInvalidValues()
+            {
+                //arrange
+                Time time = new Time();
+
+                //act
+                TestContext.WriteLine(time.ToString());
+
+                //assert
+                Assert.IsTrue(time.hours < 0 || time.hours == int.MaxValue);
+                Assert.IsTrue(time.minutes < 0 || time.minutes == int.MaxValue);
+            }
+
+            [TestMethod]
+            public void ValuedInitializeTime_GetValidValues()
+            {
+                //arrange
+                Time time = new Time(0, 0);
+
+                //act
+                TestContext.WriteLine(time.ToString());
+
+                //assert
+                Assert.IsTrue(time.hours == 0);
+                Assert.IsTrue(time.minutes == 0);
+            }
+        }
+
     }
 }

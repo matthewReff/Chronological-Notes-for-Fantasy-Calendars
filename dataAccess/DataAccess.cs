@@ -2,11 +2,27 @@
 
 namespace DataAccessors
 {
-    public class DataAccess
+    public class DataAccessor
     {
-        public DataAccess()
-        {
 
+        #region Properties
+
+        private string _filePath;
+
+        string FilePath {
+            get
+            {
+                return _filePath;
+            }
         }
+
+        #endregion
+
+        public DataAccessor(string filePath)
+        {
+            _filePath = filePath;
+        }
+
+
     }
 }
