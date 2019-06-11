@@ -1,6 +1,6 @@
 # Chronological-Notes-for-Fantasy-Calendars
 
-Made as a request for a friend who wanted a way to keep track of the timeline for his D&D campaign.
+Made as a request for a friend who wanted a way to keep track of the timeline for their D&D campaign.
 
 Planned Features:
 
