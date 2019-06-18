@@ -98,7 +98,7 @@ namespace DataAccessors
             XmlSchemaSet xs = new XmlSchemaSet();
             XmlSchema schema;
 
-            schema = xs.Add("", @"C:\Users\Geniusammyr\source\repos\Chronological-Notes-for-Fantasy-Calendars\temp\XMLSchema1.xsd");
+            schema = xs.Add("", "");
 
             return schema;
         }

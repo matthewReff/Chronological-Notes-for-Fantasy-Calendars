@@ -1,28 +1,27 @@
 ﻿using DataAccessors;
 using DataStructures;
 using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Xml;
+using System.Xml.Schema;
 
 namespace tempDisplay
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
-            string filePath = args[0];
-            if (!File.Exists(filePath))
-            {
-                Console.WriteLine("File not found");
-                return;
-            }
+            string filePath = Console.ReadLine();
 
-            DataAccessor dataClass = new DataAccessor();
+            DataAccessor dataAccessor1 = new DataAccessor(filePath);
 
-            Timeline timeLine = new Timeline();
+            Timeline timeline = new Timeline();
+            dataAccessor1.LoadTimeline(out timeline);
+            dataAccessor1.SaveTimeline(timeline);
+            Console.WriteLine(timeline.ToString());
 
-            Console.WriteLine(timeLine.ToString());
-
-
+            return;
         }
     }
 }

@@ -1,12 +1,13 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using DataStructures;
 using DataAccessors;
+using System.Reflection;
+using System.IO;
 
 namespace CSVDataAccessorTests
 {
     class XMLDataAccessorTest
     {
-
 
         [TestClass]
 
@@ -14,6 +15,7 @@ namespace CSVDataAccessorTests
         {
             public TestContext TestContext { get; set; }
             private TestContext _testContext;
+            Assembly asm = Assembly.GetExecutingAssembly();
 
             [TestMethod]
             public void DataAccessorExists_Test()
@@ -27,6 +29,22 @@ namespace CSVDataAccessorTests
                
             }
 
+            [TestMethod]
+            public void DataAccessorLoad_Test()
+            {
+                //arrange
+                Stream stream = asm.GetManifestResourceStream(@"XML_Test_Files\validNormalTestData.xml");
+                StreamReader reader = new StreamReader(stream);
+                string file = reader.ReadToEnd();
+                DataAccessor dataAccessor = new DataAccessor(file);
+                Timeline timeline = new Timeline();
+
+                //act
+                dataAccessor.LoadTimeline(out timeline);
+
+                //assert
+
+            }
         }
     }
 }

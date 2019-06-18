@@ -3,11 +3,21 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp2.1</TargetFramework>
+    <ApplicationIcon />
+    <StartupObject />
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\dataAccess\DataAccessors.csproj" />
-    <ProjectReference Include="..\DataStructures\DataStructures.csproj" />
+    <None Remove="validNormalTestData.xml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="validNormalTestData.xml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DataAccessor\DataAccessors.csproj" />
+    <ProjectReference Include="..\SharedDataStructures\SharedDataStructures.csproj" />
   </ItemGroup>
 
 </Project>
