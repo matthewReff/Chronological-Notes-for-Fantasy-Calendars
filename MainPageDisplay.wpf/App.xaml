@@ -4,6 +4,15 @@
              xmlns:local="clr-namespace:MainPageDisplay.wpf"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <ResourceDictionary>
+            <Style TargetType="ListViewItem"
+               x:Key="ListViewItemStyle">
+
+                <Setter Property="HorizontalContentAlignment"
+                    Value="Stretch" />
+                <Setter Property="Background"
+                    Value="Wheat" />
+            </Style>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

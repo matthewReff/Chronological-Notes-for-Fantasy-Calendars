@@ -28,4 +28,9 @@
     <PackageReference Include="MSTest.TestFramework" Version="1.3.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\DataAccessor\DataAccessors.csproj" />
+    <ProjectReference Include="..\SharedDataStructures\SharedDataStructures.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -41,16 +41,16 @@ namespace DataAccessors
                 writer.WriteStartElement("note");
 
                 writer.WriteStartElement("date");
-                string XmlDateString = DateToPeriodSeperatedString(thing.date);
+                string XmlDateString = DateToPeriodSeperatedString(thing.Date);
                 writer.WriteString(XmlDateString);
                 writer.WriteEndElement();
 
                 writer.WriteStartElement("title");
-                writer.WriteString(thing.title);
+                writer.WriteString(thing.Title);
                 writer.WriteEndElement();
 
                 writer.WriteStartElement("body");
-                writer.WriteString(thing.content);
+                writer.WriteString(thing.Content);
                 writer.WriteEndElement();
 
                 writer.WriteEndElement();
@@ -71,11 +71,13 @@ namespace DataAccessors
             XmlReader reader;
             XmlReaderSettings settings = new XmlReaderSettings();
             XmlDocument doc = new XmlDocument();
-            XmlSchema schema = getSchema();
+            //XmlSchema schema = getSchema();
 
-            settings.Schemas.Add(schema);
+            //settings.Schemas.Add(schema);
 
-            reader = XmlReader.Create(FilePath, settings);
+            //reader = XmlReader.Create(FilePath, settings);
+
+            reader = XmlReader.Create(FilePath);
 
             doc.Load(reader);
 
@@ -105,9 +107,7 @@ namespace DataAccessors
 
         public Note ParseXmlNodeToNote(XmlNode noteNode)
         {
-            Note generatedNote = new Note();
             Date tempDate = new Date();
-            Time tempTime = new Time();
             List<string> nodeContents = new List<string>();
 
             for (int i = 0; i < noteNode.ChildNodes.Count; i++)
@@ -115,37 +115,40 @@ namespace DataAccessors
                 nodeContents.Add(noteNode.ChildNodes[i].InnerText);
             }
 
-            string[] splitDateTime = nodeContents[0].Split('.');
+            tempDate = DataAccessor.PeriodSeperatedStringToDate(nodeContents[0]);
+            
+
+            return new Note(tempDate, nodeContents[1], nodeContents[2]);
+        }
+
+        
+        public static Date PeriodSeperatedStringToDate(string dateString)
+        {
+            string[] splitDateTime = dateString.Split('.');
             int year = int.Parse(splitDateTime[0]);
             int month = int.Parse(splitDateTime[1]);
             int day = int.Parse(splitDateTime[2]);
             int hours = int.Parse(splitDateTime[3]);
             int minutes = int.Parse(splitDateTime[4]);
-            tempTime = new Time(hours, minutes);
-            tempDate = new Date(year, month, day, tempTime);
+            Time time = new Time(hours, minutes);
 
-            generatedNote.date = tempDate;
-            generatedNote.title = nodeContents[1];
-            generatedNote.content = nodeContents[2];
-
-            return generatedNote;
+            return new Date(year, month, day, time);
         }
 
-        private string DateToPeriodSeperatedString(Date date)
+        public static string DateToPeriodSeperatedString(Date date)
         {
-            string returnString = String.Empty;
+            string dateString = string.Empty;
+            dateString += date.year.ToString();
+            dateString += ".";
+            dateString += date.month.ToString();
+            dateString += ".";
+            dateString += date.day.ToString();
+            dateString += ".";
+            dateString += date.time.hours.ToString();
+            dateString += ".";
+            dateString += date.time.minutes.ToString();
 
-            returnString += date.year.ToString();
-            returnString += ".";
-            returnString += date.month.ToString();
-            returnString += ".";
-            returnString += date.day.ToString();
-            returnString += ".";
-            returnString += date.time.hours.ToString();
-            returnString += ".";
-            returnString += date.time.minutes.ToString();
-
-            return returnString;
+            return dateString;
         }
 
         private bool CreateBaseFileIfMissing()

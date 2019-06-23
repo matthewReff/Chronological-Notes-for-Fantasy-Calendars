@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Runtime.CompilerServices;
 
 [assembly: InternalsVisibleTo("Unit Tests")]
@@ -171,51 +172,51 @@ namespace DataStructures
 
     public class Note
     {
-        public Date date;
-        public string title;
-        public string content;
+        public Date Date { get; set; }
+        public string Title { get; set; }
+        public string Content { get; set; }
 
         public Note()
         {
-            date = new Date();
-            title = string.Empty;
-            content = string.Empty;
+            Date = new Date();
+            Title = string.Empty;
+            Content = string.Empty;
         }
 
         public Note(Date _date, string _title, string _content)
         {
-            date = _date;
-            title = _title;
-            content = _content;
+            Date = _date;
+            Title = _title;
+            Content = _content;
         }
 
         public override string ToString()
         {
             string outputString = string.Empty;
-            outputString += date.ToString() + "\n";
-            outputString += "Title: " + title + "\n";
-            outputString += "Content: " + content;
+            outputString += Date.ToString() + "\n";
+            outputString += "Title: " + Title + "\n";
+            outputString += "Content: " + Content;
 
             return outputString;
         }
 
         public static bool operator <(Note left, Note right)
         {
-            return left.date < right.date;
+            return left.Date < right.Date;
         }
 
         public static bool operator >(Note left, Note right)
         {
-            return left.date > right.date;
+            return left.Date > right.Date;
         }
 
         public static bool operator ==(Note left, Note right)
         {
-            return left.date == right.date;
+            return left.Date == right.Date;
         }
         public static bool operator !=(Note left, Note right)
         {
-            return left.date != right.date;
+            return left.Date != right.Date;
         }
 
         public override bool Equals(object obj)
@@ -225,24 +226,19 @@ namespace DataStructures
 
         public override int GetHashCode()
         {
-            return date.GetHashCode() ^ title.GetHashCode() ^ content.GetHashCode();
+            return Date.GetHashCode() ^ Title.GetHashCode() ^ Content.GetHashCode();
         }
 
     }
 
-    public class Timeline : IEnumerable, ICollection
+    public class Timeline : IEnumerable, ICollection //, INotifyCollectionChanged
     {
 
-        private LinkedList<Note> timelineList;
-        private int _count = 0;
+        private LinkedList<Note> _timelineList;
 
-        public int Count
-        {
-            get
-            {
-                return _count;
-            }
-        }
+        public event NotifyCollectionChangedEventHandler CollectionChanged;
+
+        public int Count { get; private set; } = 0;
 
         public bool IsSynchronized
         {
@@ -261,36 +257,37 @@ namespace DataStructures
 
         public Timeline()
         {
-            timelineList = new LinkedList<Note>();
+            _timelineList = new LinkedList<Note>();
         }
 
         public bool Add(Note note)
         {
             bool additonIsValid = IsValidNote(note);
-            LinkedListNode<Note> currentNode = timelineList.First;
+            LinkedListNode<Note> currentNode = _timelineList.First;
             
             if(additonIsValid)
             {
                 if (Count == 0)
                 {
-                    timelineList.AddFirst(note);
+                    _timelineList.AddFirst(note);
                 }
                 else
                 {
-                    while(currentNode != timelineList.Last && note > currentNode.Value)
+                    while(currentNode != _timelineList.Last && note > currentNode.Value)
                     {
                          currentNode = currentNode.Next;
                     }
-                    if (currentNode == timelineList.Last && note > currentNode.Value)
+                    if (currentNode == _timelineList.Last && note > currentNode.Value)
                     {
-                            timelineList.AddLast(note);
+                            _timelineList.AddLast(note);
                     }
                     else
                     {
-                        timelineList.AddBefore(currentNode, note);
+                        _timelineList.AddBefore(currentNode, note);
                     }
                 }
-                _count++;
+                Count++;
+                //CollectionChanged(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add, typeof(Note)));
             }
 
             return additonIsValid;
@@ -304,8 +301,8 @@ namespace DataStructures
             }
 
             bool noteFound = false;
-            LinkedListNode<Note> currentNode = timelineList.First;
-            foreach (Note listNote in timelineList)
+            LinkedListNode<Note> currentNode = _timelineList.First;
+            foreach (Note listNote in _timelineList)
             {
                 if(listNote == note)
                 {
@@ -319,8 +316,10 @@ namespace DataStructures
 
             if(noteFound)
             {
-                timelineList.Remove(currentNode);
-                _count--;
+                _timelineList.Remove(currentNode);
+                Count--;
+                //CollectionChanged(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Remove, typeof(Note)));
+
             }
 
             return noteFound;
@@ -328,32 +327,32 @@ namespace DataStructures
 
         internal LinkedListNode<Note> Find(Note note)
         {
-            return timelineList.Find(note);
+            return _timelineList.Find(note);
         }
 
         internal bool IsValidNote(Note note)
         {
-            if (note.date.day <= 0)
+            if (note.Date.day <= 0)
             {
                 return false;
             }
-            else if (note.date.month <= 0)
+            else if (note.Date.month <= 0)
             {
                 return false;
             }
-            else if (note.date.year <= 0)
+            else if (note.Date.year <= 0)
             {
                 return false;
             }
-            else if (note.date.time.minutes < 0)
+            else if (note.Date.time.minutes < 0)
             {
                 return false;
             }
-            else if (note.date.time.hours < 0)
+            else if (note.Date.time.hours < 0)
             {
                 return false;
             }
-            else if (note.title == string.Empty)
+            else if (note.Title == string.Empty)
             {
                 return false;
             }
@@ -364,7 +363,7 @@ namespace DataStructures
         public void CopyTo(Array array, int index)
         {
             List<Note> noteList = new List<Note>();
-            foreach(Note note in timelineList)
+            foreach(Note note in _timelineList)
             {
                 noteList.Add(note);
             }
@@ -375,7 +374,7 @@ namespace DataStructures
         {
             string outputString = string.Empty;
             outputString += "Timeline:\n\n";
-            foreach(Note note in timelineList)
+            foreach(Note note in _timelineList)
             {
                 outputString += note.ToString() + "\n\n";
             }
@@ -391,7 +390,7 @@ namespace DataStructures
 
             public TimelineEnumerator(Timeline timeline)
             {
-                this.timeline = timeline.timelineList;
+                this.timeline = timeline._timelineList;
                 this.internalIterator = this.timeline.GetEnumerator();
             }
 
@@ -401,7 +400,7 @@ namespace DataStructures
             {
                 return internalIterator.MoveNext();
             }
-
+            
             public void Reset()
             {
                 this.internalIterator = this.timeline.GetEnumerator();
