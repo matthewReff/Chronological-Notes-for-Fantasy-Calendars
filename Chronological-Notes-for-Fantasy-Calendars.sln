@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.28922.388
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TempDisplay", "temp\TempDisplay.csproj", "{2CDDEC38-745C-49CE-BBE6-37239A11D4AB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleDisplay", "temp\ConsoleDisplay.csproj", "{2CDDEC38-745C-49CE-BBE6-37239A11D4AB}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Unit Tests", "TimelineStructureTest\Unit Tests.csproj", "{16EFA7ED-FAF9-4960-A988-C1E637AD64B6}"
 EndProject

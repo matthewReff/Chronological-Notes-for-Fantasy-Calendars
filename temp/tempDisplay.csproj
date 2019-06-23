@@ -1,23 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
-
-  <PropertyGroup>
-    <OutputType>Exe</OutputType>
-    <TargetFramework>netcoreapp2.1</TargetFramework>
-    <ApplicationIcon />
-    <StartupObject />
-  </PropertyGroup>
-
-  <ItemGroup>
-    <None Remove="validNormalTestData.xml" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Include="validNormalTestData.xml" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\DataAccessor\DataAccessors.csproj" />
-    <ProjectReference Include="..\SharedDataStructures\SharedDataStructures.csproj" />
-  </ItemGroup>
-
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup />
 </Project>
