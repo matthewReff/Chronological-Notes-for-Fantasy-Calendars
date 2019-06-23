@@ -29,6 +29,7 @@ namespace CSVDataAccessorTests
                
             }
 
+            /*
             [TestMethod]
             public void DataAccessorLoad_Test()
             {
@@ -45,6 +46,7 @@ namespace CSVDataAccessorTests
                 //assert
 
             }
+            */
         }
     }
 }

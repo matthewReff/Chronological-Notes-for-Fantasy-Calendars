@@ -6,15 +6,19 @@
         xmlns:local="clr-namespace:MainPageDisplay.wpf"
         xmlns:NoteNamespace="clr-namespace:DataStructures;assembly=SharedDataStructures"
         mc:Ignorable="d"
-        Title="MainWindow" Height="720" Width="1400">
-     
+        Title="MainWindow"
+        Height="720"
+        Width="1400">
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height=".5*" />
@@ -25,159 +29,120 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <TextBlock Name="FilepathTextBoxLabel" 
-                 Grid.Column="0"
-                 Grid.Row="0"
-                 Text="Filepath"
+        <TextBlock Name="FilepathTextBoxLabel"
+                   Grid.Column="0"
+                   Grid.Row="0"
+                   Text="Filepath"
                    Grid.ColumnSpan="3"
-                 TextAlignment="Center"
-                 HorizontalAlignment="Stretch"
-                 VerticalAlignment="Stretch"
-                 FontSize="40"
-                   Background="Wheat"
-                 />
+                   Style="{StaticResource LabelStyle}"/>
 
-        <TextBox Name="FilepathTextBox" 
+        <TextBox Name="FilepathTextBox"
                  Grid.Column="0"
                  Grid.Row="1"
                  Grid.ColumnSpan="3"
                  Text="{Binding FilePathField, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                 TextAlignment="Center"
-                 HorizontalAlignment="Stretch"
-                 VerticalAlignment="Stretch"
-                 FontSize="30"
-                 />
-        
-        <Button Name="a" 
-                 Grid.Column="3"
-                 Grid.Row="1"
-                 Content="Load File"
-                 HorizontalAlignment="Stretch"
-                 VerticalAlignment="Stretch"
-                 VerticalContentAlignment="Center"
-                 HorizontalContentAlignment="Center"
-                 FontSize="40"
-                 Command="{Binding LoadFileButtonClick, Mode=OneWay}"
-                 />
-        
-        <TextBlock Name="DateTextBoxLabel" 
-                 Grid.Column="0"
-                 Grid.Row="2"
-                 Text="Date"
-                 TextAlignment="Center"
-                 HorizontalAlignment="Stretch"
-                 VerticalAlignment="Stretch"
-                 FontSize="40"
-                   Background="Wheat"
-                 />
+                 Style="{StaticResource LongTextBoxStyle}" />
 
-        <TextBox Name="DateTextBox" 
+        <TextBlock Name="DateTextBoxLabel"
+                   Grid.Column="0"
+                   Grid.Row="2"
+                   Text="Date"
+                   Style="{StaticResource LabelStyle}" />
+
+        <TextBox Name="DateTextBox"
                  Grid.Column="0"
                  Grid.Row="3"
                  Text="{Binding DateField, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                 TextAlignment="Center"
-                 HorizontalAlignment="Stretch"
-                 VerticalAlignment="Stretch"
-                 VerticalContentAlignment="Center"
-                 HorizontalContentAlignment="Center"
-                 FontSize="20"
-                 />
+                 Style="{StaticResource LongTextBoxStyle}" />
+
+        <TextBlock Name="DateTextBoxFormayyLabel"
+                   Grid.Column="0"
+                   Grid.Row="4"
+                   Text="Date is in Year.Month.Day.Hour.Minute format"
+                   TextWrapping="Wrap"
+                   FontSize="18"
+                   Style="{StaticResource LabelStyle}" />
         
-        <TextBlock Name="TitleTextBoxLabel" 
-                 Grid.Column="1"
-                 Grid.Row="2"
-                 Text="Title"
-                 TextAlignment="Center"
-                 HorizontalAlignment="Stretch"
-                 VerticalAlignment="Stretch"
-                 FontSize="40"
-                   Background="Wheat"
-                 />
+        <TextBlock Name="StatusTextBlock"
+                 Grid.Column="0"
+                 Grid.Row="5"
+                   Grid.ColumnSpan="3"
+                 Text="{Binding Status, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                   Style="{StaticResource LabelStyle}" />
         
-        <TextBox Name="TitleTextBox" 
+
+        <TextBlock Name="TitleTextBoxLabel"
+                   Grid.Column="1"
+                   Grid.Row="2"
+                   Text="Title"
+                   Style="{StaticResource LabelStyle}" />
+
+        <TextBox Name="TitleTextBox"
                  Grid.Column="1"
                  Grid.Row="3"
                  Text="{Binding TitleField, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                 TextAlignment="Center"
-                 TextWrapping="Wrap"
-                 HorizontalAlignment="Stretch"
-                 VerticalAlignment="Stretch"
-                 VerticalContentAlignment="Center"
-                 HorizontalContentAlignment="Center"
-                 FontSize="20"
-                 />
+                 Style="{StaticResource LongTextBoxStyle}" />
 
-        <TextBlock Name="BodyTextBoxLabel" 
-                 Grid.Column="2"
-                 Grid.Row="2"
-                 Text="Body"
-                 TextAlignment="Center"
-                 HorizontalAlignment="Stretch"
-                 VerticalAlignment="Stretch"
-                 FontSize="40"
-                 Background="Wheat"
-                 />
+        <TextBlock Name="BodyTextBoxLabel"
+                   Grid.Column="2"
+                   Grid.Row="2"
+                   Text="Body"
+                   Style="{StaticResource LabelStyle}" />
 
-        <TextBox Name="BodyTextBox" 
+        <TextBox Name="BodyTextBox"
                  Grid.Column="2"
                  Grid.Row="3"
                  Text="{Binding ContentField, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                 TextAlignment="Center"
-                 HorizontalAlignment="Stretch"
-                 VerticalAlignment="Stretch"
-                 TextWrapping="Wrap"
-                 VerticalContentAlignment="Center"
-                 HorizontalContentAlignment="Center"
-                 FontSize="20"
-                 />
-
-        <Button Name="CreateTimelineEntryButton" 
-                 Grid.Column="3"
-                 Grid.Row="3"
-                Content="Create Note"
-                 HorizontalAlignment="Stretch"
-                 VerticalAlignment="Stretch"
-                 VerticalContentAlignment="Center"
-                 HorizontalContentAlignment="Center"
-                 FontSize="30"
-                 Command="{Binding NoteCreateButtonClick}"
-                 />
-
-        <Button Name="EditSelectedNoteButton" 
-                 Grid.Column="3"
-                 Grid.Row="4"
-                Content="Edit Selected Note"
-                 HorizontalAlignment="Stretch"
-                 VerticalAlignment="Stretch"
-                 VerticalContentAlignment="Center"
-                 HorizontalContentAlignment="Center"
-                 FontSize="30"
-                 Command="{Binding NoteCreateButtonClick}"
-                 />
+                 Style="{StaticResource LongTextBoxStyle}" />
         
-        <Button Name="RemoveSelectedNoteButton" 
-                 Grid.Column="3"
-                 Grid.Row="5"
+        <Button Name="LoadFileButton"
+                Grid.Column="3"
+                Grid.Row="0"
+                Content="Load From File"
+                Style="{StaticResource ButtonStyle}"
+                Command="{Binding LoadFileButtonClick, Mode=OneWay}" />
+
+        <Button Name="SaveFileButton"
+                Grid.Column="3"
+                Grid.Row="1"
+                Content="Save To File"
+                Style="{StaticResource ButtonStyle}"
+                Command="{Binding SaveFileButtonClick, Mode=OneWay}" />
+        
+
+        <Button Name="CreateTimelineEntryButton"
+                Grid.Column="3"
+                Grid.Row="3"
+                Content="Create Note"
+                Style="{StaticResource ButtonStyle}"
+                Command="{Binding NoteCreateButtonClick}" />
+
+        <Button Name="EditSelectedNoteButton"
+                Grid.Column="4"
+                Grid.Row="5"
+                Content="Edit Selected Note"
+                Style="{StaticResource ButtonStyle}"
+                Command="{Binding EditNoteButtonClick}" />
+
+        <Button Name="RemoveSelectedNoteButton"
+                Grid.Column="5"
+                Grid.Row="5"
                 Content="Remove Selected Note"
-                 HorizontalAlignment="Stretch"
-                 VerticalAlignment="Stretch"
-                 VerticalContentAlignment="Center"
-                 HorizontalContentAlignment="Center"
-                 FontSize="30"
-                 Command="{Binding NoteCreateButtonClick}"
-                 />
+                Style="{StaticResource ButtonStyle}"
+                Command="{Binding RemoveNoteButtonClick}" />
 
         <ListView Name="NoteListView"
                   Grid.Column="4"
                   Grid.Row="0"
-                  Grid.RowSpan="6"
-                  ItemsSource="{Binding ObservableTimelineField}" 
+                  Grid.ColumnSpan="2"
+                  Grid.RowSpan="5"
+                  SelectedIndex="{Binding SelectedNoteIndex}"
+                  ItemsSource="{Binding ObservableTimelineField}"
                   ItemContainerStyle="{StaticResource ListViewItemStyle}"
                   ScrollViewer.HorizontalScrollBarVisibility="Disabled">
-            
-            
+
+
             <ListView.ItemTemplate>
-                
                 <DataTemplate DataType="NoteNamespace:Note">
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -190,49 +155,33 @@
                         </Grid.RowDefinitions>
 
                         <TextBlock  Grid.Column="0"
-                                    Grid.Row="0" 
-                                    TextAlignment="Center"
-                                    HorizontalAlignment="Center"
-                                    VerticalAlignment="Center"
-                                    TextWrapping="Wrap"
-                                    FontSize="20"
-                                    Text="{Binding Date, Mode=OneWay}"
-                               />
+                                    Grid.Row="0"
+                                    Style="{StaticResource ListViewItemTextBlock}"
+                                    Text="{Binding Date, Mode=OneWay}" />
+
+                        <TextBlock  Grid.Column="0"
+                                    Grid.Row="1"
+                                    Style="{StaticResource ListViewItemTextBlock}"
+                                    Text="{Binding Title, Mode=OneWay}" />
                         
                         <TextBlock  Grid.Column="0"
-                                    Grid.Row="1" 
-                                    TextAlignment="Center"
-                                    VerticalAlignment="Center"
-                                    HorizontalAlignment="Center"
-                                    FontSize="20"
-                                    TextWrapping="Wrap"
-                                    Text="{Binding Title, Mode=OneWay}"
-                               />
-                        <TextBlock  Grid.Column="0"
-                                    Grid.Row="2" 
-                                    TextAlignment="Center"
-                                    HorizontalAlignment="Center"
-                                    VerticalAlignment="Center"
-                                    FontSize="20"
-                                    TextWrapping="Wrap"
-                                    Text="{Binding Content, Mode=OneWay}"
-                               />
-                        
+                                    Grid.Row="2"
+                                    Style="{StaticResource ListViewItemTextBlock}"
+                                    Text="{Binding Content, Mode=OneWay}" />
                         
                     </Grid>
-
                 </DataTemplate>
             </ListView.ItemTemplate>
-            
+
 
         </ListView>
 
 
 
 
-        
-        
-        
+
+
+
 
 
     </Grid>

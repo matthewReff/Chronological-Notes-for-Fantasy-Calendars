@@ -95,6 +95,31 @@ namespace DataStructures
             time = _time;
         }
 
+        public bool IsValidDate()
+        {
+            if (day <= 0)
+            {
+                return false;
+            }
+            else if (month <= 0)
+            {
+                return false;
+            }
+            else if (year <= 0)
+            {
+                return false;
+            }
+            else if (time.minutes < 0)
+            {
+                return false;
+            }
+            else if (time.hours < 0)
+            {
+                return false;
+            }
+            return true;
+        }
+
         public override string ToString()
         {
             string outputString = string.Empty;
@@ -199,6 +224,8 @@ namespace DataStructures
 
             return outputString;
         }
+
+        
 
         public static bool operator <(Note left, Note right)
         {
@@ -330,28 +357,13 @@ namespace DataStructures
             return _timelineList.Find(note);
         }
 
-        internal bool IsValidNote(Note note)
+        public bool IsValidNote(Note note)
         {
-            if (note.Date.day <= 0)
+            if(!note.Date.IsValidDate())
             {
                 return false;
             }
-            else if (note.Date.month <= 0)
-            {
-                return false;
-            }
-            else if (note.Date.year <= 0)
-            {
-                return false;
-            }
-            else if (note.Date.time.minutes < 0)
-            {
-                return false;
-            }
-            else if (note.Date.time.hours < 0)
-            {
-                return false;
-            }
+            
             else if (note.Title == string.Empty)
             {
                 return false;
