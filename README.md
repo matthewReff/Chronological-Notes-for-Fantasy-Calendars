@@ -6,7 +6,7 @@ Planned Features:
 
 >Arbitrary Calandars
  
->Notes assigned to a given date/time
+>[X]Notes assigned to a given date/time
   
 >Notes viewable on the calandar
   
