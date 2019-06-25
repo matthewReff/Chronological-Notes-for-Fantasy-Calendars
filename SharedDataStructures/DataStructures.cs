@@ -314,7 +314,7 @@ namespace DataStructures
                     }
                 }
                 Count++;
-                //CollectionChanged(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add, typeof(Note)));
+                //CollectionChanged(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add, typeof(Timeline)));
             }
 
             return additonIsValid;
@@ -345,7 +345,7 @@ namespace DataStructures
             {
                 _timelineList.Remove(currentNode);
                 Count--;
-                //CollectionChanged(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Remove, typeof(Note)));
+                //CollectionChanged(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Remove, typeof(Timeline)));
 
             }
 

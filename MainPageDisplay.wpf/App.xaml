@@ -19,7 +19,7 @@
                x:Key="ButtonStyle">
                 
                 <Setter Property="Background"
-                        Value="BlanchedAlmond" />
+                        Value="MediumPurple" />
                 <Setter Property="HorizontalAlignment"
                     Value="Stretch" />
                 <Setter Property="VerticalAlignment"

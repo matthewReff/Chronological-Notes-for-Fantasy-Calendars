@@ -138,10 +138,9 @@
                   Grid.ColumnSpan="2"
                   Grid.RowSpan="5"
                   SelectedIndex="{Binding SelectedNoteIndex}"
-                  ItemsSource="{Binding ObservableTimelineField}"
+                  ItemsSource="{Binding TimelineField}"
                   ItemContainerStyle="{StaticResource ListViewItemStyle}"
                   ScrollViewer.HorizontalScrollBarVisibility="Disabled">
-
 
             <ListView.ItemTemplate>
                 <DataTemplate DataType="NoteNamespace:Note">
