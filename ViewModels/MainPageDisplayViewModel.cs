@@ -1,6 +1,7 @@
 ﻿using DataAccessors;
 using DataStructures;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.IO;
@@ -89,11 +90,11 @@ namespace MainPageDisplayViewModelNamespace
             }
         }
 
-        public ObservableCollection<Note> ObservableTimelineField
+        public List<Note> ObservableTimelineField
         {
             get
             {
-                ObservableCollection<Note> tempCollection = new ObservableCollection<Note>();
+                List<Note> tempCollection = new List<Note>();
                 foreach(Note note in TimelineField)
                 {
                     tempCollection.Add(note);
@@ -172,70 +173,103 @@ namespace MainPageDisplayViewModelNamespace
 
         #endregion
 
-       
-
         private void OnLoadFileButtonClick()
         {
-            if(!File.Exists(FilePathField))
+            try
             {
-                Status = "File does not exist";
-                return;
+                if (!File.Exists(FilePathField))
+                {
+                    Status = "File does not exist";
+                    return;
+                }
+                DataAccessor data = new DataAccessor(FilePathField);
+                Timeline timeline = new Timeline();
+                data.LoadTimeline(out timeline);
+                TimelineField = timeline;
+                Status = "File Loaded";
+                OnPropertyChanged("ObservableTimelineField");
             }
-            DataAccessor data = new DataAccessor(FilePathField);
-            Timeline timeline = new Timeline();
-            data.LoadTimeline(out timeline);
-            TimelineField = timeline;
-            Status = "File Loaded";
-            OnPropertyChanged("ObservableTimelineField");
+            catch(Exception e)
+            {
+                Status = e.Message;
+            }
         }
 
         private void OnSaveFileButtonClick()
         {
-            DataAccessor data = new DataAccessor(FilePathField);
-            data.SaveTimeline(TimelineField);
-            Status = "File Saved";
-            OnPropertyChanged("ObservableTimelineField");
-
+            try
+            {
+                DataAccessor data = new DataAccessor(FilePathField);
+                data.SaveTimeline(TimelineField);
+                Status = "File Saved";
+                OnPropertyChanged("ObservableTimelineField");
+            }
+            catch (Exception e)
+            {
+                Status = e.Message;
+            }
         }
 
         private void OnNoteCreateButtonClick()
         {
-            if(TitleField == string.Empty)
+            try
             {
-                Status = "Title is required";
-                return;
+                if (TitleField == string.Empty)
+                {
+                    Status = "Title is required";
+                    return;
+                }
+                else if (!DataAccessor.PeriodSeperatedStringToDate(DateField).IsValidDate())
+                {
+                    Status = "Date is invalid";
+                    return;
+                }
+                TimelineField.Add(new Note { Title = TitleField, Content = ContentField, Date = DataAccessor.PeriodSeperatedStringToDate(DateField) });
+                TitleField = string.Empty;
+                ContentField = string.Empty;
+                DateField = string.Empty;
+                OnPropertyChanged("ObservableTimelineField");
             }
-            else if(!DataAccessor.PeriodSeperatedStringToDate(DateField).IsValidDate())
+            catch (Exception e)
             {
-                Status = "Date is invalid";
-                return;
+                Status = e.Message;
             }
-            TimelineField.Add(new Note { Title = TitleField, Content = ContentField, Date = DataAccessor.PeriodSeperatedStringToDate(DateField) });
-            TitleField = string.Empty;
-            ContentField = string.Empty;
-            DateField = string.Empty;
-            OnPropertyChanged("ObservableTimelineField");
         }
 
         private void OnEditNoteButtonClick()
         {
-            if (SelectedNoteIndex >= 0)
+            try
             {
-                Note thisNote = ObservableTimelineField[SelectedNoteIndex];
-                TitleField = thisNote.Title;
-                ContentField = thisNote.Content;
-                DateField = DataAccessor.DateToPeriodSeperatedString(thisNote.Date);
-                TimelineField.Remove(thisNote);
-                OnPropertyChanged("ObservableTimelineField");
+                if (SelectedNoteIndex >= 0)
+                {
+                    Note thisNote = ObservableTimelineField[SelectedNoteIndex];
+                    TitleField = thisNote.Title;
+                    ContentField = thisNote.Content;
+                    DateField = DataAccessor.DateToPeriodSeperatedString(thisNote.Date);
+                    TimelineField.Remove(thisNote);
+                    OnPropertyChanged("ObservableTimelineField");
+                }
+            }
+            catch (Exception e)
+            {
+                Status = e.Message;
             }
         }
+        
         private void OnRemoveNoteButtonClick()
         {
-            if (SelectedNoteIndex >= 0)
+            try
             {
-                Note thisNote = ObservableTimelineField[SelectedNoteIndex];
-                TimelineField.Remove(thisNote);
-                OnPropertyChanged("ObservableTimelineField");
+                if (SelectedNoteIndex >= 0)
+                {
+                    Note thisNote = ObservableTimelineField[SelectedNoteIndex];
+                    TimelineField.Remove(thisNote);
+                    OnPropertyChanged("ObservableTimelineField");
+                }
+            }
+            catch (Exception e)
+            {
+                Status = e.Message;
             }
         }
 

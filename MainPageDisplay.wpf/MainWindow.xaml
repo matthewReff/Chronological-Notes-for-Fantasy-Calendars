@@ -67,6 +67,7 @@
                  Grid.Column="0"
                  Grid.Row="5"
                    Grid.ColumnSpan="3"
+                   TextWrapping="Wrap"
                  Text="{Binding Status, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                    Style="{StaticResource LabelStyle}" />
         
