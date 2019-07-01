@@ -51,26 +51,26 @@ namespace DataStructures
             return left.hours > right.hours;
         }
 
-        public static bool operator ==(Time left, Time right)
-        {
-            return (left.hours == right.hours &&
-                left.minutes == right.minutes);
-        }
+        //public static bool operator ==(Time left, Time right)
+        //{
+        //    return (left.hours == right.hours &&
+        //        left.minutes == right.minutes);
+        //}
 
-        public static bool operator !=(Time left, Time right)
-        {
-            return !(left.hours == right.hours &&
-                left.minutes == right.minutes);
-        }
+        //public static bool operator !=(Time left, Time right)
+        //{
+        //    return !(left.hours == right.hours &&
+        //        left.minutes == right.minutes);
+        //}
 
-        public override bool Equals(object obj)
-        {
-            return this == (Time)obj;
-        }
-        public override int GetHashCode()
-        {
-            return hours ^ minutes;
-        }
+        //public override bool Equals(object obj)
+        //{
+        //    return this == (Time)obj;
+        //}
+        //public override int GetHashCode()
+        //{
+        //    return hours ^ minutes;
+        //}
     }
     
     public class Date
@@ -167,31 +167,31 @@ namespace DataStructures
             return left.year > right.year;
         }
 
-        public static bool operator ==(Date left, Date right)
-        {
-            return (left.year == right.year &&
-                left.month == right.month &&
-                left.day == right.day && 
-                left.time == right.time);
-        }
+        //public static bool operator ==(Date left, Date right)
+        //{
+        //    return (left.year == right.year &&
+        //        left.month == right.month &&
+        //        left.day == right.day && 
+        //        left.time == right.time);
+        //}
 
-        public static bool operator !=(Date left, Date right)
-        {
-            return !(left.year == right.year &&
-                left.month == right.month &&
-                left.day == right.day &&
-                left.time == right.time);
-        }
+        //public static bool operator !=(Date left, Date right)
+        //{
+        //    return !(left.year == right.year &&
+        //        left.month == right.month &&
+        //        left.day == right.day &&
+        //        left.time == right.time);
+        //}
 
-        public override bool Equals(object obj)
-        {
-            return this == (Date)obj;
-        }
+        //public override bool Equals(object obj)
+        //{
+        //    return this == (Date)obj;
+        //}
 
-        public override int GetHashCode()
-        {
-            return year ^ month ^ day ^ time.GetHashCode();
-        }
+        //public override int GetHashCode()
+        //{
+        //    return year ^ month ^ day ^ time.GetHashCode();
+        //}
     }
 
     public class Note
@@ -236,24 +236,24 @@ namespace DataStructures
             return left.Date > right.Date;
         }
 
-        public static bool operator ==(Note left, Note right)
-        {
-            return left.Date == right.Date;
-        }
-        public static bool operator !=(Note left, Note right)
-        {
-            return left.Date != right.Date;
-        }
+        //public static bool operator ==(Note left, Note right)
+        //{
+        //    return left.Date == right.Date;
+        //}
+        //public static bool operator !=(Note left, Note right)
+        //{
+        //    return left.Date != right.Date;
+        //}
 
-        public override bool Equals(object obj)
-        {
-            return this == (Note)obj;
-        }
+        //public override bool Equals(object obj)
+        //{
+        //    return this == (Note)obj;
+        //}
 
-        public override int GetHashCode()
-        {
-            return Date.GetHashCode() ^ Title.GetHashCode() ^ Content.GetHashCode();
-        }
+        //public override int GetHashCode()
+        //{
+        //    return Date.GetHashCode() ^ Title.GetHashCode() ^ Content.GetHashCode();
+        //}
 
     }
 
