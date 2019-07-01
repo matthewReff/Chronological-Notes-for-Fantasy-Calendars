@@ -28,7 +28,9 @@ namespace MainPageDisplay.wpf
         public MainWindow()
         {
             viewModel = new MainPageDisplayViewModel();
-            
+
+            //NoteListView += ContentCollectionChanged;
+
             DataContext = viewModel;
             InitializeComponent();
         }

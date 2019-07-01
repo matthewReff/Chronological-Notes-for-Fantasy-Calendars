@@ -187,7 +187,7 @@ namespace MainPageDisplayViewModelNamespace
                 data.LoadTimeline(out timeline);
                 TimelineField = timeline;
                 Status = "File Loaded";
-                OnPropertyChanged("ObservableTimelineField");
+                OnPropertyChanged("TimelineField");
             }
             catch(Exception e)
             {
@@ -202,7 +202,7 @@ namespace MainPageDisplayViewModelNamespace
                 DataAccessor data = new DataAccessor(FilePathField);
                 data.SaveTimeline(TimelineField);
                 Status = "File Saved";
-                OnPropertyChanged("ObservableTimelineField");
+                OnPropertyChanged("TimelineField");
             }
             catch (Exception e)
             {
@@ -228,7 +228,7 @@ namespace MainPageDisplayViewModelNamespace
                 TitleField = string.Empty;
                 ContentField = string.Empty;
                 DateField = string.Empty;
-                OnPropertyChanged("ObservableTimelineField");
+                OnPropertyChanged("TimelineField");
             }
             catch (Exception e)
             {
@@ -247,7 +247,7 @@ namespace MainPageDisplayViewModelNamespace
                     ContentField = thisNote.Content;
                     DateField = DataAccessor.DateToPeriodSeperatedString(thisNote.Date);
                     TimelineField.Remove(thisNote);
-                    OnPropertyChanged("ObservableTimelineField");
+                    OnPropertyChanged("TimelineField");
                 }
             }
             catch (Exception e)
@@ -264,7 +264,7 @@ namespace MainPageDisplayViewModelNamespace
                 {
                     Note thisNote = ObservableTimelineField[SelectedNoteIndex];
                     TimelineField.Remove(thisNote);
-                    OnPropertyChanged("ObservableTimelineField");
+                    OnPropertyChanged("TimelineField");
                 }
             }
             catch (Exception e)

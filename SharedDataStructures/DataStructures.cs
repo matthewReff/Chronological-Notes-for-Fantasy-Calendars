@@ -194,7 +194,6 @@ namespace DataStructures
         }
     }
 
-
     public class Note
     {
         public Date Date { get; set; }
@@ -258,7 +257,7 @@ namespace DataStructures
 
     }
 
-    public class Timeline : IEnumerable, ICollection //, INotifyCollectionChanged
+    public class Timeline : IEnumerable, ICollection , INotifyCollectionChanged
     {
 
         private LinkedList<Note> _timelineList;
@@ -314,7 +313,7 @@ namespace DataStructures
                     }
                 }
                 Count++;
-                //CollectionChanged(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add, typeof(Timeline)));
+                CollectionChanged?.Invoke(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Reset)); //TODO
             }
 
             return additonIsValid;
@@ -329,6 +328,8 @@ namespace DataStructures
 
             bool noteFound = false;
             LinkedListNode<Note> currentNode = _timelineList.First;
+            int removedIndex = 0;
+
             foreach (Note listNote in _timelineList)
             {
                 if(listNote == note)
@@ -338,6 +339,7 @@ namespace DataStructures
                 if(!noteFound)
                 {
                     currentNode = currentNode.Next;
+                    removedIndex++;
                 }
             }
 
@@ -345,7 +347,8 @@ namespace DataStructures
             {
                 _timelineList.Remove(currentNode);
                 Count--;
-                //CollectionChanged(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Remove, typeof(Timeline)));
+                CollectionChanged?.Invoke(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Reset)); //TODO
+
 
             }
 
