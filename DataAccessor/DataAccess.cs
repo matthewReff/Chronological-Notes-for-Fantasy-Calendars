@@ -107,7 +107,6 @@ namespace DataAccessors
 
         public Note ParseXmlNodeToNote(XmlNode noteNode)
         {
-            Date tempDate = new Date();
             List<string> nodeContents = new List<string>();
 
             for (int i = 0; i < noteNode.ChildNodes.Count; i++)
@@ -115,24 +114,41 @@ namespace DataAccessors
                 nodeContents.Add(noteNode.ChildNodes[i].InnerText);
             }
 
-            tempDate = DataAccessor.PeriodSeperatedStringToDate(nodeContents[0]);
+            Date convertedDate = DataAccessor.PeriodSeperatedStringToDate(nodeContents[0]);
             
 
-            return new Note(tempDate, nodeContents[1], nodeContents[2]);
+            return new Note(convertedDate, nodeContents[1], nodeContents[2]);
         }
 
         
         public static Date PeriodSeperatedStringToDate(string dateString)
         {
             string[] splitDateTime = dateString.Split('.');
-            int year = int.Parse(splitDateTime[0]);
-            int month = int.Parse(splitDateTime[1]);
-            int day = int.Parse(splitDateTime[2]);
-            int hours = int.Parse(splitDateTime[3]);
-            int minutes = int.Parse(splitDateTime[4]);
-            Time time = new Time(hours, minutes);
+            int year;
+            int month;
+            int day;
+            int? hour;
+            int? minute;
+            int numArguments = splitDateTime.Length;
+            if(numArguments != 3 && numArguments != 5)
+            {
+                throw new Exception("Malformed date in conversion");
+            }
+            year = int.Parse(splitDateTime[0]);
+            month = int.Parse(splitDateTime[1]);
+            day = int.Parse(splitDateTime[2]);
+            if (numArguments != 3)
+            {
+                hour = int.Parse(splitDateTime[3]);
+                minute = int.Parse(splitDateTime[4]);
+            }
+            else
+            {
+                hour = null;
+                minute = null;
+            }
 
-            return new Date(year, month, day, time);
+            return new Date(year, month, day, hour, minute);
         }
 
         public static string DateToPeriodSeperatedString(Date date)
@@ -144,9 +160,9 @@ namespace DataAccessors
             dateString += ".";
             dateString += date.day.ToString();
             dateString += ".";
-            dateString += date.time.hours.ToString();
+            dateString += date.hour.ToString();
             dateString += ".";
-            dateString += date.time.minutes.ToString();
+            dateString += date.minute.ToString();
 
             return dateString;
         }

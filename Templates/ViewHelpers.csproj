@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{DAA28E6B-EDD4-4A06-B780-DDDD5EA42AD3}</ProjectGuid>
+    <ProjectGuid>{EAC902C0-F5D1-4667-B7FD-CD88332CA7EC}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SharedDataStructures</RootNamespace>
-    <AssemblyName>SharedDataStructures</AssemblyName>
+    <RootNamespace>Templates</RootNamespace>
+    <AssemblyName>Templates</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -31,6 +31,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -39,11 +41,24 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Timeline.cs" />
-    <Compile Include="DataStructures.cs" />
+    <Compile Include="Converters\DateToMinuteDisplayConverter.cs" />
+    <Compile Include="Converters\DateToHourDisplayConverter.cs" />
+    <Compile Include="Converters\DateToDayDisplayConverter.cs" />
+    <Compile Include="Converters\DateToMonthDisplayConverter.cs" />
+    <Compile Include="Converters\DateToYearDisplayConverter.cs" />
+    <Compile Include="DisplayableDataStructures\NoteDataTemplateSelector.cs" />
+    <Compile Include="Templates\NoteDataTemplateSelector.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SharedDataStructures\SharedDataStructures.csproj">
+      <Project>{DAA28E6B-EDD4-4A06-B780-DDDD5EA42AD3}</Project>
+      <Name>SharedDataStructures</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -12,16 +12,13 @@ namespace TimelineStructuresTests
         private TestContext _testContext;
 
         #region Construct Notes
-        Time timeInvalidMinutes;
-        Time timeInvalidHours;
-        Time timeValidEarly;
-        Time timeValidLate;
 
         Date dateInvalidTime;
         Date dateInvalidYear;
         Date dateInvalidMonth;
         Date dateInvalidDay;
         Date dateValidEarly;
+        Date dateValidEarlyShort;
         Date dateValidMiddle;
         Date dateValidLate;
 
@@ -39,23 +36,19 @@ namespace TimelineStructuresTests
         Note noteInvalidDate;
         Note noteInvalidNoTitle;
         Note noteValidNoBody;
-
+        Note noteValidShortDate;
 
         [TestInitialize]
         public void SetUp()
         { 
-            timeInvalidMinutes = new Time(-1, 0);
-            timeInvalidHours = new Time(0, -1);
-            timeValidEarly = new Time(0, 0);
-            timeValidLate = new Time(1, 1);
-
-            dateInvalidTime = new Date(1, 1, 1, timeInvalidMinutes);
-            dateInvalidYear = new Date(-1, 1, 1, timeValidEarly);
-            dateInvalidMonth = new Date(1, -1, 1, timeValidEarly);
-            dateInvalidDay = new Date(1, 1, -1, timeValidEarly);
-            dateValidEarly = new Date(1, 1, 1, timeValidEarly);
-            dateValidMiddle = new Date(2, 2, 2, timeValidEarly);
-            dateValidLate = new Date(3, 3, 3, timeValidEarly);
+            dateInvalidTime = new Date(1, 1, 1, -1, 0);
+            dateInvalidYear = new Date(-1, 1, 1, 0, 0);
+            dateInvalidMonth = new Date(1, -1, 1, 0, 0);
+            dateInvalidDay = new Date(1, 1, -1, 0, 0);
+            dateValidEarly = new Date(1, 1, 1, 0, 0);
+            dateValidEarlyShort = new Date(1, 1, 1);
+            dateValidMiddle = new Date(2, 2, 2, 0, 0);
+            dateValidLate = new Date(3, 3, 3, 0, 0);
 
             titleFull = "NON EMPTY TITLE";
             titleEmpty = string.Empty;
@@ -71,6 +64,8 @@ namespace TimelineStructuresTests
             noteInvalidDate = new Note(dateInvalidYear, titleFull, bodyFull);
             noteInvalidNoTitle = new Note(dateValidEarly, titleEmpty, bodyFull);
             noteValidNoBody = new Note(dateValidEarly, titleFull, bodyEmpty);
+            noteValidShortDate = new Note(dateValidEarlyShort, titleFull, bodyFull);
+
         }
 
         #endregion
@@ -115,8 +110,24 @@ namespace TimelineStructuresTests
 
             //assert
             Assert.IsTrue(succeded);
+            Assert.AreEqual(1, timeline.Count);
+
         }
 
+        [TestMethod]
+        public void AddTimeline_ValidShortDateTest()
+        {
+            //arrange
+            Timeline timeline = new Timeline();
+
+            //act
+            bool succeded = timeline.Add(noteValidShortDate);
+            TestContext.WriteLine(timeline.ToString());
+
+            //assert
+            Assert.AreEqual(1, timeline.Count);
+            Assert.IsTrue(succeded);
+        }
 
         [TestMethod]
         public void AddTimeline_InsertFront_ValidTest()

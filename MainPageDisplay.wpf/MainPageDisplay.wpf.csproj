@@ -148,6 +148,10 @@
       <Project>{DAA28E6B-EDD4-4A06-B780-DDDD5EA42AD3}</Project>
       <Name>SharedDataStructures</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Templates\ViewHelpers.csproj">
+      <Project>{eac902c0-f5d1-4667-b7fd-cd88332ca7ec}</Project>
+      <Name>ViewHelpers</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ViewModels\ViewModels.csproj">
       <Project>{c8ee500c-e8a6-43ee-9fe5-10d1db596a8d}</Project>
       <Name>ViewModels</Name>

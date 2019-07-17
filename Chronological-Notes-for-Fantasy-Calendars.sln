@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unit Tests", "UnitTests\Uni
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DebugConsoleDisplay", "DebugConsoleDisplay\DebugConsoleDisplay.csproj", "{72E93DAD-515A-48A2-B158-9028B8C6C41E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ViewHelpers", "Templates\ViewHelpers.csproj", "{EAC902C0-F5D1-4667-B7FD-CD88332CA7EC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{72E93DAD-515A-48A2-B158-9028B8C6C41E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{72E93DAD-515A-48A2-B158-9028B8C6C41E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{72E93DAD-515A-48A2-B158-9028B8C6C41E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EAC902C0-F5D1-4667-B7FD-CD88332CA7EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EAC902C0-F5D1-4667-B7FD-CD88332CA7EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EAC902C0-F5D1-4667-B7FD-CD88332CA7EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EAC902C0-F5D1-4667-B7FD-CD88332CA7EC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -224,7 +224,9 @@ namespace MainPageDisplayViewModelNamespace
                     Status = "Date is invalid";
                     return;
                 }
-                TimelineField.Add(new Note { Title = TitleField, Content = ContentField, Date = DataAccessor.PeriodSeperatedStringToDate(DateField) });
+                TimelineField.Add(new Note (DataAccessor.PeriodSeperatedStringToDate(DateField), TitleField, ContentField));
+                //TimelineField.Add(new Note { Title = TitleField, Content = ContentField, Date = DataAccessor.PeriodSeperatedStringToDate(DateField) });
+
                 TitleField = string.Empty;
                 ContentField = string.Empty;
                 DateField = string.Empty;

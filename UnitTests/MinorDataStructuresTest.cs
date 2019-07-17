@@ -15,70 +15,36 @@ namespace MinorDataStructuresTests
             private TestContext _testContext;
 
             [TestMethod]
-            public void BlankInitializeDate_GetInvalidValues()
+            public void ValuedInitializeDate_AllValuesTest ()
             {
                 //arrange
-                Date date = new Date();
+                Date date = new Date(1, 1, 1, 0, 0);
 
                 //act
                 TestContext.WriteLine(date.ToString());
 
                 //assert
-                Assert.IsTrue(date.day < 0 || date.day == int.MaxValue);
-                Assert.IsTrue(date.month < 0 || date.month == int.MaxValue);
-                Assert.IsTrue(date.year < 0 || date.year == int.MaxValue);
+                Assert.IsTrue(date.year == 1);
+                Assert.IsTrue(date.month == 1 );
+                Assert.IsTrue(date.day == 1 );
+                Assert.IsTrue(date.hour == 0);
+                Assert.IsTrue(date.minute == 0);
+
             }
 
             [TestMethod]
-            public void ValuedInitializeDate_GetValidValues()
+            public void ValuedInitializeDate_SomeValuesTest()
             {
                 //arrange
-                Time time = new Time(0, 0);
-                Date date = new Date(1, 1, 1, time);
+                Date date = new Date(1, 1, 1);
 
                 //act
                 TestContext.WriteLine(date.ToString());
 
                 //assert
                 Assert.IsTrue(date.day == 1);
-                Assert.IsTrue(date.month == 1 );
-                Assert.IsTrue(date.year == 1 );
-            }
-        }
-
-        [TestClass]
-
-        public class TimeTests
-        {
-            public TestContext TestContext { get; set; }
-            private TestContext _testContext;
-
-            [TestMethod]
-            public void BlankInitializeTime_GetInvalidValues()
-            {
-                //arrange
-                Time time = new Time();
-
-                //act
-                TestContext.WriteLine(time.ToString());
-
-                //assert
-                Assert.IsTrue(time.hours < 0 || time.hours == int.MaxValue);
-                Assert.IsTrue(time.minutes < 0 || time.minutes == int.MaxValue);
-            }
-
-            [TestMethod]
-            public void ValuedInitializeTime_GetValidValues()
-            {
-                //arrange
-                Time time = new Time(0, 0);
-
-                //act
-                TestContext.WriteLine(time.ToString());
-
-                //assert
-                Assert.IsTrue(time.hours == 0);
-                Assert.IsTrue(time.minutes == 0);
+                Assert.IsTrue(date.month == 1);
+                Assert.IsTrue(date.year == 1);
             }
         }
 
