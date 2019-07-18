@@ -159,10 +159,16 @@ namespace DataAccessors
             dateString += date.month.ToString();
             dateString += ".";
             dateString += date.day.ToString();
-            dateString += ".";
-            dateString += date.hour.ToString();
-            dateString += ".";
-            dateString += date.minute.ToString();
+            if (date.hour != null)
+            {
+                dateString += ".";
+                dateString += date.hour.ToString();
+            }
+            if (date.minute != null)
+            {
+                dateString += ".";
+                dateString += date.minute.ToString();
+            }
 
             return dateString;
         }
