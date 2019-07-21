@@ -62,7 +62,7 @@ namespace Tests
             Timeline timeline = new Timeline();
 
             //act
-            bool succeded = timeline.Add(TestingObjects.NoteValidShortDate);
+            bool succeded = timeline.Add(TestingObjects.NoteValidLateShortDate);
             TestContext.WriteLine(timeline.ToString());
 
             //assert
@@ -86,11 +86,7 @@ namespace Tests
 
             //assert
             timeline.CopyTo(actual, 0);
-            Assert.AreEqual(expected.Length, actual.Length);
-            for (int i = 0; i < expected.Length; i++)
-            {
-                Assert.AreEqual(expected[i], actual[i]);
-            }
+            CollectionAssert.AreEqual(expected, actual);
         }
 
         [TestMethod]
@@ -108,11 +104,7 @@ namespace Tests
 
             //assert
             timeline.CopyTo(actual, 0);
-            Assert.AreEqual(expected.Length, actual.Length);
-            for (int i = 0; i < expected.Length; i++)
-            {
-                Assert.AreEqual(expected[i], actual[i]);
-            }
+            CollectionAssert.AreEqual(expected, actual);
         }
 
         [TestMethod]
@@ -132,11 +124,7 @@ namespace Tests
 
             //assert
             timeline.CopyTo(actual, 0);
-            Assert.AreEqual(expected.Length, actual.Length);
-            for(int i = 0; i < expected.Length; i++)
-            {
-                Assert.AreEqual(expected[i], actual[i]);
-            }
+            CollectionAssert.AreEqual(expected, actual);
         }
 
         [TestMethod]
@@ -156,11 +144,46 @@ namespace Tests
 
             //assert
             timeline.CopyTo(actual, 0);
-            Assert.AreEqual(expected.Length, actual.Length);
-            for (int i = 0; i < expected.Length; i++)
-            {
-                Assert.AreEqual(expected[i], actual[i]);
-            }
+            CollectionAssert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void AddTimeline2NotesMinuteOFf_ValidTest()
+        {
+            //arrange
+            Timeline timeline = new Timeline();
+            Note[] expected = new Note[] { TestingObjects.NoteValidMiddle, TestingObjects.NoteValidOffMiddle };
+            Note[] actual = new Note[2];
+
+            //act
+            timeline.Add(TestingObjects.NoteValidMiddle);
+            timeline.Add(TestingObjects.NoteValidOffMiddle);
+            TestContext.WriteLine(timeline.ToString());
+
+
+            //assert
+            timeline.CopyTo(actual, 0);
+            CollectionAssert.AreEqual(expected, actual);
+
+        }
+
+        [TestMethod]
+        public void AddTimelineMixedDateTypes_HoldCorrectOrder()
+        {
+            //arrange
+            Timeline timeline = new Timeline();
+            Note[] expected = new Note[] { TestingObjects.NoteValidLateShortDate, TestingObjects.NoteValidLate };
+            Note[] actual = new Note[2];
+
+            //act
+            timeline.Add(TestingObjects.NoteValidLateShortDate);
+            timeline.Add(TestingObjects.NoteValidLate);
+            TestContext.WriteLine(timeline.ToString());
+
+
+            //assert
+            timeline.CopyTo(actual, 0);
+            CollectionAssert.AreEqual(expected, actual);
         }
 
         [TestMethod]

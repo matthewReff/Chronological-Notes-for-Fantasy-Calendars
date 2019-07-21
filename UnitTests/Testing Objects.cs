@@ -17,7 +17,9 @@ namespace Tests
         static Date dateValidEarly = new Date(1, 1, 1, 0, 0);
         static Date dateValidEarlyShort = new Date(1, 1, 1);
         static Date dateValidMiddle = new Date(2, 2, 2, 0, 0);
+        static Date dateValidOffMiddle = new Date(2, 2, 2, 0, 1);
         static Date dateValidLate = new Date(3, 3, 3, 0, 0);
+        static Date dateValidLateShort = new Date(3, 3, 3);
 
         static string titleFull = "NON EMPTY TITLE";
         static string titleEmpty = string.Empty;
@@ -33,6 +35,10 @@ namespace Tests
         public static Note NoteValidMiddle
         {
             get { return new Note(dateValidMiddle, titleFull, bodyFull); }
+        }
+        public static Note NoteValidOffMiddle
+        {
+            get { return new Note(dateValidOffMiddle, titleFull, bodyFull); }
         }
         public static Note NoteValidLate
         {
@@ -54,9 +60,13 @@ namespace Tests
         {
             get { return new Note(dateValidEarly, titleFull, bodyEmpty); }
         }
-        public static Note NoteValidShortDate
+        public static Note NoteValidEarlyShortDate
         {
             get { return new Note(dateValidEarlyShort, titleFull, bodyFull); }
+        }
+        public static Note NoteValidLateShortDate
+        {
+            get { return new Note(dateValidLateShort, titleFull, bodyFull); }
         }
     }
 }

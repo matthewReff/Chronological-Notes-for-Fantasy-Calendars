@@ -86,11 +86,21 @@ namespace DataStructures
                 {
                     if (left.day == right.day)
                     {
-                        if(left.hour == right.hour)
+                        if (left.hour == null && right.hour != null)
                         {
-                            return left.minute < right.minute;
+                            return true;
                         }
-                        return left.hour < left.minute;
+                        else if (left.hour != null && right.hour == null)
+                        {
+                            return false;
+                        }
+                        else
+                        {
+                            if (left.hour == right.hour)
+                            {
+                                return left.minute < right.minute;
+                            }
+                        }
                     }
                     return left.day < right.day;
                 }
@@ -99,7 +109,7 @@ namespace DataStructures
             return left.year < right.year;
         }
 
-        public static bool operator >(Date left, Date right)
+        public static bool operator >(Date left, Date right) // null < value
         {
             if (left.year == right.year)
             {
@@ -107,11 +117,21 @@ namespace DataStructures
                 {
                     if (left.day == right.day)
                     {
-                        if (left.hour == right.hour)
+                        if (left.hour == null && right.hour != null)
                         {
-                            return left.minute > right.minute;
+                            return false;
                         }
-                        return left.hour > left.minute;
+                        else if (left.hour != null && right.hour == null)
+                        {
+                            return true;
+                        }
+                        else
+                        {
+                            if (left.hour == right.hour)
+                            {
+                                return left.minute > right.minute;
+                            }
+                        }
                     }
                     return left.day > right.day;
                 }
