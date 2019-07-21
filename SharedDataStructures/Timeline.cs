@@ -38,7 +38,7 @@ namespace DataStructures
         }
 
         public bool Add(Note note)
-        {
+        { 
             bool additonIsValid = IsValidNote(note);
             LinkedListNode<Note> currentNode = _timelineList.First;
             

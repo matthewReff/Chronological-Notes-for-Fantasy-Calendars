@@ -1,7 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using DataStructures;
 
-namespace MinorDataStructuresTests
+namespace Tests
 {
     class MinorDataStructuresTest
     {

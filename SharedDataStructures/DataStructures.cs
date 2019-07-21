@@ -77,6 +77,7 @@ namespace DataStructures
 
             return outputString;
         }
+
         public static bool operator <(Date left, Date right)
         {
             if (left.year == right.year)
@@ -119,31 +120,32 @@ namespace DataStructures
             return left.year > right.year;
         }
 
-        //public static bool operator ==(Date left, Date right)
-        //{
-        //    return (left.year == right.year &&
-        //        left.month == right.month &&
-        //        left.day == right.day && 
-        //        left.time == right.time);
-        //}
+        public static bool operator ==(Date left, Date right)
+        {
+            return (left.year == right.year &&
+                left.month == right.month &&
+                left.day == right.day &&
+                left.minute == right.minute && 
+                left.hour == right.hour);
+        }
 
-        //public static bool operator !=(Date left, Date right)
-        //{
-        //    return !(left.year == right.year &&
-        //        left.month == right.month &&
-        //        left.day == right.day &&
-        //        left.time == right.time);
-        //}
+        public static bool operator !=(Date left, Date right)
+        {
+            return !(left.year == right.year &&
+                left.month == right.month &&
+                left.day == right.day &&
+                left.minute == right.minute &&
+                left.hour == right.hour);
+        }
 
-        //public override bool Equals(object obj)
-        //{
-        //    return this == (Date)obj;
-        //}
-
-        //public override int GetHashCode()
-        //{
-        //    return year ^ month ^ day ^ time.GetHashCode();
-        //}
+        public override bool Equals(object obj)
+        {
+            if (obj.GetType() != typeof(Date))
+            {
+                return false;
+            }
+            return this == (Date)obj;
+        }
     }
 
     public class Note
@@ -169,8 +171,6 @@ namespace DataStructures
             return outputString;
         }
 
-        
-
         public static bool operator <(Note left, Note right)
         {
             return left.Date < right.Date;
@@ -181,25 +181,27 @@ namespace DataStructures
             return left.Date > right.Date;
         }
 
-        //public static bool operator ==(Note left, Note right)
-        //{
-        //    return left.Date == right.Date;
-        //}
-        //public static bool operator !=(Note left, Note right)
-        //{
-        //    return left.Date != right.Date;
-        //}
+        public static bool operator ==(Note left, Note right)
+        {
+            return left.Date == right.Date && 
+                left.Title == right.Title &&
+                left.Content == right.Content;
+        }
+        public static bool operator !=(Note left, Note right)
+        {
+            return !(left.Date == right.Date &&
+                left.Title == right.Title &&
+                left.Content == right.Content);
+        }
 
-        //public override bool Equals(object obj)
-        //{
-        //    return this == (Note)obj;
-        //}
-
-        //public override int GetHashCode()
-        //{
-        //    return Date.GetHashCode() ^ Title.GetHashCode() ^ Content.GetHashCode();
-        //}
-
+        public override bool Equals(object obj)
+        {
+            if(obj.GetType() != typeof(Note) )
+            {
+                return false;
+            }
+            return this == (Note)obj;
+        }
     }
 }
 

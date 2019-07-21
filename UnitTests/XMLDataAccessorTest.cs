@@ -3,8 +3,9 @@ using DataStructures;
 using DataAccessors;
 using System.Reflection;
 using System.IO;
+using System;
 
-namespace CSVDataAccessorTests
+namespace Tests
 {
     class XMLDataAccessorTest
     {
@@ -15,7 +16,6 @@ namespace CSVDataAccessorTests
         {
             public TestContext TestContext { get; set; }
             private TestContext _testContext;
-            Assembly asm = Assembly.GetExecutingAssembly();
 
             [TestMethod]
             public void DataAccessorExists_Test()
@@ -29,24 +29,25 @@ namespace CSVDataAccessorTests
                
             }
 
-            /*
+            
             [TestMethod]
             public void DataAccessorLoad_Test()
             {
                 //arrange
-                Stream stream = asm.GetManifestResourceStream(@"XML_Test_Files\validNormalTestData.xml");
-                StreamReader reader = new StreamReader(stream);
-                string file = reader.ReadToEnd();
-                DataAccessor dataAccessor = new DataAccessor(file);
+                string testProjectDirectory = Directory.GetParent(Environment.CurrentDirectory).Parent.FullName;
+                string testFileFolder = Path.Combine(testProjectDirectory, "XML_Test_Files");
+                string specificTestFile = Path.Combine(testFileFolder, "validNormalTestData.xml");
+                DataAccessor dataAccessor = new DataAccessor(specificTestFile);
+
                 Timeline timeline = new Timeline();
 
                 //act
                 dataAccessor.LoadTimeline(out timeline);
 
                 //assert
-
+                Assert.AreEqual(timeline.Count, 3);
             }
-            */
+            
         }
     }
 }

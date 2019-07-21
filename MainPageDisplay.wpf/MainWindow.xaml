@@ -15,10 +15,10 @@
     <Window.Resources>
 
         <ConverterNamespace:DateToYearDisplayConverter x:Key="YearConverter" />
-        <ConverterNamespace:DateToYearDisplayConverter x:Key="MonthConverter" />
-        <ConverterNamespace:DateToYearDisplayConverter x:Key="DayConverter" />
-        <ConverterNamespace:DateToYearDisplayConverter x:Key="HourConverter" />
-        <ConverterNamespace:DateToYearDisplayConverter x:Key="MinuteConverter" />
+        <ConverterNamespace:DateToMonthDisplayConverter x:Key="MonthConverter" />
+        <ConverterNamespace:DateToDayDisplayConverter x:Key="DayConverter" />
+        <ConverterNamespace:DateToHourDisplayConverter x:Key="HourConverter" />
+        <ConverterNamespace:DateToMinuteDisplayConverter x:Key="MinuteConverter" />
 
         <DataTemplate x:Key="TruncatedNoteTemplate"
                       DataType="NoteNamespace:Note" >
@@ -43,13 +43,13 @@
                                Text="/"
                                FontSize="10" />
                     <TextBlock Style="{StaticResource ListViewItemTextBlock}"
-                               Text="{Binding Date, Mode=OneWay, Converter={StaticResource YearConverter}}"
+                               Text="{Binding Date, Mode=OneWay, Converter={StaticResource MonthConverter}}"
                                FontSize="10" />
                     <TextBlock Style="{StaticResource ListViewItemTextBlock}"
                                Text="/"
                                FontSize="10" />
                     <TextBlock Style="{StaticResource ListViewItemTextBlock}"
-                               Text="{Binding Date, Mode=OneWay, Converter={StaticResource YearConverter}}"
+                               Text="{Binding Date, Mode=OneWay, Converter={StaticResource DayConverter}}"
                                FontSize="10" />
                 </StackPanel>
 
@@ -93,25 +93,25 @@
                                Text="/"
                                FontSize="10" />
                     <TextBlock Style="{StaticResource ListViewItemTextBlock}"
-                               Text="{Binding Date, Mode=OneWay, Converter={StaticResource YearConverter}}"
+                               Text="{Binding Date, Mode=OneWay, Converter={StaticResource MonthConverter}}"
                                FontSize="10" />
                     <TextBlock Style="{StaticResource ListViewItemTextBlock}"
                                Text="/"
                                FontSize="10" />
                     <TextBlock Style="{StaticResource ListViewItemTextBlock}"
-                               Text="{Binding Date, Mode=OneWay, Converter={StaticResource YearConverter}}"
+                               Text="{Binding Date, Mode=OneWay, Converter={StaticResource DayConverter}}"
                                FontSize="10" />
                     <TextBlock Style="{StaticResource ListViewItemTextBlock}"
                                Text=" "
                                FontSize="10" />
                     <TextBlock Style="{StaticResource ListViewItemTextBlock}"
-                               Text="{Binding Date, Mode=OneWay, Converter={StaticResource YearConverter}}"
+                               Text="{Binding Date, Mode=OneWay, Converter={StaticResource HourConverter}}"
                                FontSize="10" />
                     <TextBlock Style="{StaticResource ListViewItemTextBlock}"
                                Text=":"
                                FontSize="10" />
                     <TextBlock Style="{StaticResource ListViewItemTextBlock}"
-                               Text="{Binding Date, Mode=OneWay, Converter={StaticResource YearConverter}}"
+                               Text="{Binding Date, Mode=OneWay, Converter={StaticResource MinuteConverter}}"
                                FontSize="10" />
 
                 </StackPanel>

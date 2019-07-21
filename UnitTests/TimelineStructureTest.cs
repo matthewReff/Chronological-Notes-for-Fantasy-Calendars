@@ -3,72 +3,13 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace TimelineStructuresTests
+namespace Tests
 {
     [TestClass]
     public class TimelineStructureTest
     {
         public TestContext TestContext { get; set; }
         private TestContext _testContext;
-
-        #region Construct Notes
-
-        Date dateInvalidTime;
-        Date dateInvalidYear;
-        Date dateInvalidMonth;
-        Date dateInvalidDay;
-        Date dateValidEarly;
-        Date dateValidEarlyShort;
-        Date dateValidMiddle;
-        Date dateValidLate;
-
-        string titleFull;
-        string titleEmpty;
-
-        string bodyFull;
-        string bodyEmpty;
-
-
-        Note noteValidEarly; 
-        Note noteValidMiddle;
-        Note noteValidLate;
-        Note noteInvalidTime;
-        Note noteInvalidDate;
-        Note noteInvalidNoTitle;
-        Note noteValidNoBody;
-        Note noteValidShortDate;
-
-        [TestInitialize]
-        public void SetUp()
-        { 
-            dateInvalidTime = new Date(1, 1, 1, -1, 0);
-            dateInvalidYear = new Date(-1, 1, 1, 0, 0);
-            dateInvalidMonth = new Date(1, -1, 1, 0, 0);
-            dateInvalidDay = new Date(1, 1, -1, 0, 0);
-            dateValidEarly = new Date(1, 1, 1, 0, 0);
-            dateValidEarlyShort = new Date(1, 1, 1);
-            dateValidMiddle = new Date(2, 2, 2, 0, 0);
-            dateValidLate = new Date(3, 3, 3, 0, 0);
-
-            titleFull = "NON EMPTY TITLE";
-            titleEmpty = string.Empty;
-
-            bodyFull = "NON EMPTY CONTENT";
-            bodyEmpty = string.Empty;
-
-
-            noteValidEarly = new Note(dateValidEarly, titleFull, bodyFull);
-            noteValidMiddle = new Note(dateValidMiddle, titleFull, bodyFull);
-            noteValidLate = new Note(dateValidLate, titleFull, bodyFull);
-            noteInvalidTime = new Note(dateInvalidTime, titleFull, bodyFull);
-            noteInvalidDate = new Note(dateInvalidYear, titleFull, bodyFull);
-            noteInvalidNoTitle = new Note(dateValidEarly, titleEmpty, bodyFull);
-            noteValidNoBody = new Note(dateValidEarly, titleFull, bodyEmpty);
-            noteValidShortDate = new Note(dateValidEarlyShort, titleFull, bodyFull);
-
-        }
-
-        #endregion
 
         [TestMethod]
         public void InitializeTimelineTest()
@@ -91,7 +32,7 @@ namespace TimelineStructuresTests
             Timeline timeline = new Timeline();
 
             //act
-            bool succeded = timeline.Add(noteValidEarly);
+            bool succeded = timeline.Add(TestingObjects.NoteValidEarly);
             TestContext.WriteLine(timeline.ToString());
 
             //assert
@@ -105,7 +46,7 @@ namespace TimelineStructuresTests
             Timeline timeline = new Timeline();
 
             //act
-            bool succeded = timeline.Add(noteValidNoBody);
+            bool succeded = timeline.Add(TestingObjects.NoteValidNoBody);
             TestContext.WriteLine(timeline.ToString());
 
             //assert
@@ -121,7 +62,7 @@ namespace TimelineStructuresTests
             Timeline timeline = new Timeline();
 
             //act
-            bool succeded = timeline.Add(noteValidShortDate);
+            bool succeded = timeline.Add(TestingObjects.NoteValidShortDate);
             TestContext.WriteLine(timeline.ToString());
 
             //assert
@@ -134,18 +75,22 @@ namespace TimelineStructuresTests
         {
             //arrange
             Timeline timeline = new Timeline();
-            Note[] expected = new Note[] { noteValidEarly, noteValidMiddle } ;
+            Note[] expected = new Note[] { TestingObjects.NoteValidEarly, TestingObjects.NoteValidMiddle } ;
             Note[] actual = new Note[2];
 
             //act
-            timeline.Add(noteValidMiddle);
-            timeline.Add(noteValidEarly);
+            timeline.Add(TestingObjects.NoteValidMiddle);
+            timeline.Add(TestingObjects.NoteValidEarly);
             TestContext.WriteLine(timeline.ToString());
 
 
             //assert
             timeline.CopyTo(actual, 0);
-            CollectionAssert.AreEqual(expected, actual);
+            Assert.AreEqual(expected.Length, actual.Length);
+            for (int i = 0; i < expected.Length; i++)
+            {
+                Assert.AreEqual(expected[i], actual[i]);
+            }
         }
 
         [TestMethod]
@@ -153,17 +98,21 @@ namespace TimelineStructuresTests
         {
             //arrange
             Timeline timeline = new Timeline();
-            Note[] expected = new Note[] { noteValidMiddle, noteValidLate };
+            Note[] expected = new Note[] { TestingObjects.NoteValidMiddle, TestingObjects.NoteValidLate };
             Note[] actual = new Note[2];
-            //act
-            timeline.Add(noteValidMiddle);
-            timeline.Add(noteValidLate);
-            TestContext.WriteLine(timeline.ToString());
 
+            //act
+            timeline.Add(TestingObjects.NoteValidMiddle);
+            timeline.Add(TestingObjects.NoteValidLate);
+            TestContext.WriteLine(timeline.ToString());
 
             //assert
             timeline.CopyTo(actual, 0);
-            CollectionAssert.AreEqual(expected, actual);
+            Assert.AreEqual(expected.Length, actual.Length);
+            for (int i = 0; i < expected.Length; i++)
+            {
+                Assert.AreEqual(expected[i], actual[i]);
+            }
         }
 
         [TestMethod]
@@ -171,19 +120,23 @@ namespace TimelineStructuresTests
         {
             //arrange
             Timeline timeline = new Timeline();
-            Note[] expected = new Note[] { noteValidEarly, noteValidMiddle, noteValidLate};
+            Note[] expected = new Note[] { TestingObjects.NoteValidEarly, TestingObjects.NoteValidMiddle, TestingObjects.NoteValidLate };
             Note[] actual = new Note[3];
 
             //act
-            timeline.Add(noteValidEarly);
-            timeline.Add(noteValidLate);
-            timeline.Add(noteValidMiddle);
+            timeline.Add(TestingObjects.NoteValidEarly);
+            timeline.Add(TestingObjects.NoteValidLate);
+            timeline.Add(TestingObjects.NoteValidMiddle);
             TestContext.WriteLine(timeline.ToString());
 
 
             //assert
             timeline.CopyTo(actual, 0);
-            CollectionAssert.AreEqual(expected, actual);
+            Assert.AreEqual(expected.Length, actual.Length);
+            for(int i = 0; i < expected.Length; i++)
+            {
+                Assert.AreEqual(expected[i], actual[i]);
+            }
         }
 
         [TestMethod]
@@ -191,19 +144,23 @@ namespace TimelineStructuresTests
         {
             //arrange
             Timeline timeline = new Timeline();
-            Note[] expected = new Note[] { noteValidEarly, noteValidMiddle, noteValidLate };
+            Note[] expected = new Note[] { TestingObjects.NoteValidEarly, TestingObjects.NoteValidMiddle, TestingObjects.NoteValidLate };
             Note[] actual = new Note[3];
 
             //act
-            timeline.Add(noteValidMiddle);
-            timeline.Add(noteValidEarly);
-            timeline.Add(noteValidLate);
+            timeline.Add(TestingObjects.NoteValidMiddle);
+            timeline.Add(TestingObjects.NoteValidEarly);
+            timeline.Add(TestingObjects.NoteValidLate);
             TestContext.WriteLine(timeline.ToString());
 
 
             //assert
             timeline.CopyTo(actual, 0);
-            CollectionAssert.AreEqual(expected, actual);
+            Assert.AreEqual(expected.Length, actual.Length);
+            for (int i = 0; i < expected.Length; i++)
+            {
+                Assert.AreEqual(expected[i], actual[i]);
+            }
         }
 
         [TestMethod]
@@ -213,8 +170,8 @@ namespace TimelineStructuresTests
             Timeline timeline = new Timeline();
             
             //act
-            timeline.Add(noteInvalidDate);
-            timeline.Add(noteValidEarly);
+            timeline.Add(TestingObjects.NoteInvalidDate);
+            timeline.Add(TestingObjects.NoteValidEarly);
             TestContext.WriteLine(timeline.ToString());
 
 
@@ -231,7 +188,7 @@ namespace TimelineStructuresTests
             Timeline timeline = new Timeline();
 
             //act
-            bool succeded = timeline.Add(noteInvalidDate);
+            bool succeded = timeline.Add(TestingObjects.NoteInvalidDate);
             TestContext.WriteLine(timeline.ToString());
 
             //assert
@@ -245,7 +202,7 @@ namespace TimelineStructuresTests
             Timeline timeline = new Timeline();
 
             //act
-            bool succeded = timeline.Add(noteInvalidTime);
+            bool succeded = timeline.Add(TestingObjects.NoteInvalidTime);
             TestContext.WriteLine(timeline.ToString());
 
             //assert
@@ -259,7 +216,7 @@ namespace TimelineStructuresTests
             Timeline timeline = new Timeline();
 
             //act
-            bool succeded = timeline.Add(noteInvalidNoTitle);
+            bool succeded = timeline.Add(TestingObjects.NoteInvalidNoTitle);
             TestContext.WriteLine(timeline.ToString());
 
             //assert
@@ -276,7 +233,7 @@ namespace TimelineStructuresTests
             Timeline timeline = new Timeline();
 
             //act
-            bool succeded = timeline.Remove(noteValidEarly);
+            bool succeded = timeline.Remove(TestingObjects.NoteValidEarly);
             TestContext.WriteLine(timeline.ToString());
 
             //assert
@@ -288,10 +245,10 @@ namespace TimelineStructuresTests
         {
             //arrange
             Timeline timeline = new Timeline();
-            timeline.Add(noteValidEarly);
+            timeline.Add(TestingObjects.NoteValidEarly);
 
             //act
-            bool succeded = timeline.Remove(noteValidEarly);
+            bool succeded = timeline.Remove(TestingObjects.NoteValidEarly);
             TestContext.WriteLine(timeline.ToString());
 
             //assert
@@ -303,13 +260,13 @@ namespace TimelineStructuresTests
         {
             //arrange
             Timeline timeline = new Timeline();
-            timeline.Add(noteValidEarly);
+            timeline.Add(TestingObjects.NoteValidEarly);
 
             //assert
             Assert.AreEqual(1, timeline.Count);
 
             //act
-            timeline.Remove(noteValidEarly);
+            timeline.Remove(TestingObjects.NoteValidEarly);
             TestContext.WriteLine(timeline.ToString());
 
             //assert
@@ -321,11 +278,11 @@ namespace TimelineStructuresTests
         {
             //arrange
             Timeline timeline = new Timeline();
-            timeline.Add(noteValidEarly);
-            timeline.Add(noteValidEarly);
+            timeline.Add(TestingObjects.NoteValidEarly);
+            timeline.Add(TestingObjects.NoteValidEarly);
 
             //act
-            bool succeded = timeline.Remove(noteValidEarly);
+            bool succeded = timeline.Remove(TestingObjects.NoteValidEarly);
             TestContext.WriteLine(timeline.ToString());
 
             //assert
@@ -338,13 +295,13 @@ namespace TimelineStructuresTests
         {
             //arrange
             Timeline timeline = new Timeline();
-            timeline.Add(noteValidEarly);
+            timeline.Add(TestingObjects.NoteValidEarly);
 
             //assert
             Assert.AreEqual(1, timeline.Count);
 
             //act
-            timeline.Remove(noteValidMiddle);
+            timeline.Remove(TestingObjects.NoteValidMiddle);
             TestContext.WriteLine(timeline.ToString());
 
             //assert
@@ -356,10 +313,10 @@ namespace TimelineStructuresTests
         {
             //arrange
             Timeline timeline = new Timeline();
-            timeline.Add(noteValidEarly);
+            timeline.Add(TestingObjects.NoteValidEarly);
 
             //act
-            bool succeded = timeline.Remove(noteValidMiddle);
+            bool succeded = timeline.Remove(TestingObjects.NoteValidMiddle);
             TestContext.WriteLine(timeline.ToString());
 
             //assert
@@ -374,11 +331,11 @@ namespace TimelineStructuresTests
         {
             //arrange
             Timeline timeline = new Timeline();
-            timeline.Add(noteValidEarly);
+            timeline.Add(TestingObjects.NoteValidEarly);
             LinkedListNode<Note> foundNode = null;
 
             //act
-            foundNode = timeline.Find(noteValidEarly);
+            foundNode = timeline.Find(TestingObjects.NoteValidEarly);
             TestContext.WriteLine(timeline.ToString());
 
             //assert
@@ -389,11 +346,11 @@ namespace TimelineStructuresTests
         {
             //arrange
             Timeline timeline = new Timeline();
-            timeline.Add(noteValidEarly);
+            timeline.Add(TestingObjects.NoteValidEarly);
             LinkedListNode<Note> foundNode = null;
 
             //act
-            foundNode = timeline.Find(noteValidMiddle);
+            foundNode = timeline.Find(TestingObjects.NoteValidMiddle);
             TestContext.WriteLine(timeline.ToString());
 
             //assert
