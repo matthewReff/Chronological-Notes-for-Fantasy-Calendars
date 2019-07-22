@@ -86,9 +86,15 @@ namespace DataAccessors
             XmlNode root = doc.FirstChild;
             root = root.NextSibling;
 
+            List<Note> noteList = new List<Note>();
             foreach (XmlNode noteNode in root.ChildNodes)
             {
-                timeline.Add(ParseXmlNodeToNote(noteNode));
+                noteList.Add(ParseXmlNodeToNote(noteNode));
+            }
+
+            for (int i = noteList.Count - 1; i >= 0; i--)
+            {
+                timeline.Add(noteList[i]);
             }
 
             reader.Close();
