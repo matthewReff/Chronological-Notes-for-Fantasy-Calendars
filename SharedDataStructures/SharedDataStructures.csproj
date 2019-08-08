@@ -41,7 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Timeline.cs" />
+    <Compile Include="AdvancedTimelineMethods.cs" />
+    <Compile Include="TimelineDataStructure.cs" />
     <Compile Include="DataStructures.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

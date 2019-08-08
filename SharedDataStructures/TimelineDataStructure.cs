@@ -8,7 +8,7 @@ using System.Runtime.CompilerServices;
 
 namespace DataStructures
 {
-    public class Timeline : IEnumerable, ICollection , INotifyCollectionChanged
+    public partial class Timeline : IEnumerable, ICollection, INotifyCollectionChanged
     {
 
         private LinkedList<Note> _timelineList;
@@ -19,10 +19,7 @@ namespace DataStructures
 
         public bool IsSynchronized
         {
-            get
-            {
-                return true; //TODO
-            }
+            get { return true; }//TODO 
         }
 
         public object SyncRoot => throw new NotImplementedException(); //TODO
@@ -37,12 +34,13 @@ namespace DataStructures
             _timelineList = new LinkedList<Note>();
         }
 
+        #region Public Methods
         public bool Add(Note note)
-        { 
+        {
             bool additonIsValid = IsValidNote(note);
             LinkedListNode<Note> currentNode = _timelineList.First;
-            
-            if(additonIsValid)
+
+            if (additonIsValid)
             {
                 if (Count == 0)
                 {
@@ -50,13 +48,13 @@ namespace DataStructures
                 }
                 else
                 {
-                    while(currentNode != _timelineList.Last && note > currentNode.Value)
+                    while (currentNode != _timelineList.Last && note > currentNode.Value)
                     {
-                         currentNode = currentNode.Next;
+                        currentNode = currentNode.Next;
                     }
                     if (currentNode == _timelineList.Last && note > currentNode.Value)
                     {
-                            _timelineList.AddLast(note);
+                        _timelineList.AddLast(note);
                     }
                     else
                     {
@@ -72,7 +70,7 @@ namespace DataStructures
 
         public bool Remove(Note note)
         {
-            if(Count == 0)
+            if (Count == 0)
             {
                 return false;
             }
@@ -83,18 +81,18 @@ namespace DataStructures
 
             foreach (Note listNote in _timelineList)
             {
-                if(listNote == note)
+                if (listNote == note)
                 {
                     noteFound = true;
                 }
-                if(!noteFound)
+                if (!noteFound)
                 {
                     currentNode = currentNode.Next;
                     removedIndex++;
                 }
             }
 
-            if(noteFound)
+            if (noteFound)
             {
                 _timelineList.Remove(currentNode);
                 Count--;
@@ -106,18 +104,14 @@ namespace DataStructures
             return noteFound;
         }
 
-        internal LinkedListNode<Note> Find(Note note)
-        {
-            return _timelineList.Find(note);
-        }
 
         public bool IsValidNote(Note note)
         {
-            if(!note.Date.IsValidDate())
+            if (!note.Date.IsValidDate())
             {
                 return false;
             }
-            
+
             else if (note.Title == string.Empty)
             {
                 return false;
@@ -129,7 +123,7 @@ namespace DataStructures
         public void CopyTo(Array array, int index)
         {
             List<Note> noteList = new List<Note>();
-            foreach(Note note in _timelineList)
+            foreach (Note note in _timelineList)
             {
                 noteList.Add(note);
             }
@@ -140,7 +134,7 @@ namespace DataStructures
         {
             string outputString = string.Empty;
             outputString += "Timeline:\n\n";
-            foreach(Note note in _timelineList)
+            foreach (Note note in _timelineList)
             {
                 outputString += note.ToString() + "\n\n";
             }
@@ -148,6 +142,14 @@ namespace DataStructures
             return outputString;
         }
 
+        #endregion
+
+        #region Internal Methods
+        internal LinkedListNode<Note> Find(Note note)
+        {
+            return _timelineList.Find(note);
+        }
+        #endregion
 
         class TimelineEnumerator : IEnumerator
         {
@@ -166,7 +168,7 @@ namespace DataStructures
             {
                 return internalIterator.MoveNext();
             }
-            
+
             public void Reset()
             {
                 this.internalIterator = this.timeline.GetEnumerator();

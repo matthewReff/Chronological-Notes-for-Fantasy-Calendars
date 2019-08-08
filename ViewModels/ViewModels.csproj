@@ -41,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CalendarTileViewModel.cs" />
+    <Compile Include="CalendarPageViewModel.cs" />
     <Compile Include="MainPageDisplayViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
