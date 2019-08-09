@@ -1,5 +1,7 @@
 # Chronological-Notes-for-Fantasy-Calendars
 
+[![Build status](https://dev.azure.com/matthewReff/Chronological-Notes-for-Fantasy-Calendars/_apis/build/status/Chronological-Notes-for-Fantasy-Calendars-.NET%20Desktop-CI)](https://dev.azure.com/matthewReff/Chronological-Notes-for-Fantasy-Calendars/_build/latest?definitionId=5)
+
 Made as a request for a friend who wanted a way to keep track of the timeline for their D&D campaign.
 
 Planned Features:
