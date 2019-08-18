@@ -1,16 +1,17 @@
-﻿using MainPageDisplayViewModelNamespace;
+﻿using ChronoCalendar;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace CalendarTile
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class CalendarTile : UserControl
     {
         CalendarTileViewModel ViewModel;
 
-        public MainWindow()
+        public CalendarTile()
         {
             ViewModel = new CalendarTileViewModel();
 

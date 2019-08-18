@@ -1,9 +1,9 @@
-using DataStructures;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections;
 using System.Collections.Generic;
+using ChronoCalendar;
 
-namespace Tests
+namespace UnitTests
 {
     [TestClass]
     public class TimelineStructureTest

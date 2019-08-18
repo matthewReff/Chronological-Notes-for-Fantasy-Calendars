@@ -1,11 +1,10 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using DataStructures;
-using DataAccessors;
 using System.Reflection;
 using System.IO;
 using System;
+using ChronoCalendar;
 
-namespace Tests
+namespace UnitTests
 {
     class XMLDataAccessorTest
     {

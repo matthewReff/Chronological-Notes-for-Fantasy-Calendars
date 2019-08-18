@@ -1,7 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using DataStructures;
+using ChronoCalendar;
 
-namespace Tests
+namespace UnitTests
 {
     class MinorDataStructuresTest
     {

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace ViewModelHelpers
+namespace ChronoCalendar
 {
     public class BindableCommand : ICommand
     {

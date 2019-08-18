@@ -6,7 +6,7 @@ using System.Runtime.CompilerServices;
 
 [assembly: InternalsVisibleTo("Unit Tests")]
 
-namespace DataStructures
+namespace ChronoCalendar
 {
     public class Date
     {

@@ -1,15 +1,13 @@
-﻿using DataAccessors;
-using DataStructures;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.IO;
 using System.Reflection;
 using System.Runtime.CompilerServices;
-using ViewModelHelpers;
+using ChronoCalendar;
 
-namespace MainPageDisplayViewModelNamespace
+namespace ChronoCalendar
 {
     public class MainPageDisplayViewModel : INotifyPropertyChanged
     {

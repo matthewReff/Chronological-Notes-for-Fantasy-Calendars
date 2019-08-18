@@ -1,11 +1,11 @@
-﻿using DataStructures;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Xml;
 using System.Xml.Schema;
+using ChronoCalendar;
 
-namespace DataAccessors
+namespace ChronoCalendar
 {
     public class DataAccessor
     {
