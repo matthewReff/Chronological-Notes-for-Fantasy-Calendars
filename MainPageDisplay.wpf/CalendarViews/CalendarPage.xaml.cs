@@ -1,5 +1,4 @@
-﻿using CalendarTile;
-using ChronoCalendar;
+﻿using ChronoCalendar;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,10 +19,10 @@ namespace ChronoCalendar
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class CalendarPage : Window
     {
-        CalendarPageViewModel viewModel;
-        public MainWindow()
+        private CalendarPageViewModel viewModel;
+        public CalendarPage()
         {
             viewModel = new CalendarPageViewModel();
 
@@ -63,19 +62,21 @@ namespace ChronoCalendar
             {
                 for(int j = 0; j < daysInWeek; j++)
                 {
-                    ///CalendarTile tile = new CalendarTile();
+                    int currentTileIndex = i * daysInWeek + j;
+                    Timeline derivedTimeline = viewModel.TimelineField.GetNotesFromDay(new Date(1, 1, currentTileIndex + 1));
+                    CalendarTile tile = new CalendarTile(derivedTimeline);
+
                     TextBlock textBlock = new TextBlock();
-                    int currentDay = i * daysInWeek + j;
+                    int currentDay = currentTileIndex;
                     textBlock.Text = currentDay.ToString();
                     textBlock.HorizontalAlignment = HorizontalAlignment.Stretch;
                     textBlock.VerticalAlignment = VerticalAlignment.Stretch;
-                    textBlock.Width = 1000;
-                    textBlock.Height = 1000;
 
-                    Grid.SetRow(textBlock, i);
-                    Grid.SetColumn(textBlock, j);
+                    Grid.SetRow(tile, i);
+                    Grid.SetColumn(tile, j);
 
-                    grid.Children.Add(textBlock);
+                    grid.Children.Add(tile);
+                    //grid.Children.Add(textBlock);
                 }
             }
 

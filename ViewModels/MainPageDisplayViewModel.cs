@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.IO;
 using System.Reflection;
 using System.Runtime.CompilerServices;
+using System.Windows;
 using ChronoCalendar;
 
 namespace ChronoCalendar

@@ -7,7 +7,7 @@
     <ProjectGuid>{B738BF22-1A23-4F5A-88DF-1EA19AD33180}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DataAccessor</RootNamespace>
+    <RootNamespace>ChronoCalendar</RootNamespace>
     <AssemblyName>DataAccessor</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

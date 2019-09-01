@@ -13,10 +13,9 @@ namespace ChronoCalendar
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public CalendarTileViewModel()
+        public CalendarTileViewModel(Timeline timeline)
         {
-            DataAccessor temp = new DataAccessor("temp");
-            temp.LoadTimeline(out _timelineField);
+            TimelineField = timeline;
             //NoteCreateButtonClick = new BindableCommand(OnNoteCreateButtonClick);
         }
 
@@ -57,6 +56,7 @@ namespace ChronoCalendar
                 {
                     _timelineField = value;
                     OnPropertyChanged();
+                    OnPropertyChanged("ObservableTimelineField");
                 }
             }
         }
@@ -75,6 +75,21 @@ namespace ChronoCalendar
            
         }
 
+        public Date Date
+        {
+            get
+            {
+                if(ObservableTimelineField.Count != 0)
+                {
+                    return ObservableTimelineField[0].Date;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+
+        }
         #endregion
 
         #endregion

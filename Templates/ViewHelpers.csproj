@@ -7,7 +7,7 @@
     <ProjectGuid>{EAC902C0-F5D1-4667-B7FD-CD88332CA7EC}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ViewHelpers</RootNamespace>
+    <RootNamespace>ChronoCalendar</RootNamespace>
     <AssemblyName>ViewHelpers</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

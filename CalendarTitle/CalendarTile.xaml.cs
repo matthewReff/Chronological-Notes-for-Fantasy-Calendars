@@ -2,22 +2,21 @@
 using System.Windows;
 using System.Windows.Controls;
 
-namespace CalendarTile
+namespace ChronoCalendar
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class CalendarTile : UserControl
     {
-        CalendarTileViewModel ViewModel;
+        CalendarTileViewModel viewModel;
 
-        public CalendarTile()
+        public CalendarTile(Timeline timeline)
         {
-            ViewModel = new CalendarTileViewModel();
 
-            //NoteListView += ContentCollectionChanged;
+            viewModel = new CalendarTileViewModel(timeline);
 
-            DataContext = ViewModel;
+            DataContext = viewModel;
 
             InitializeComponent();
         }

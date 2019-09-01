@@ -6,7 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{54E27D54-378B-4270-974B-35A0B61043EC}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>CalendarPage</RootNamespace>
+    <RootNamespace>ChronoCalendar</RootNamespace>
     <AssemblyName>CalendarPage</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -55,16 +55,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="MainWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -95,9 +87,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CalendarTitle\CalendarTile.csproj">
-      <Project>{A8CE1B30-6DEA-493D-86F6-8C439CB482B9}</Project>
-      <Name>CalendarTile</Name>
+    <ProjectReference Include="..\SharedDataStructures\SharedDataStructures.csproj">
+      <Project>{daa28e6b-edd4-4a06-b780-dddd5ea42ad3}</Project>
+      <Name>SharedDataStructures</Name>
     </ProjectReference>
     <ProjectReference Include="..\ViewModels\ViewModels.csproj">
       <Project>{C8EE500C-E8A6-43EE-9FE5-10D1DB596A8D}</Project>

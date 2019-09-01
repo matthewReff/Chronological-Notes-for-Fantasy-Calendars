@@ -19,10 +19,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DebugConsoleDisplay", "Debu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ViewHelpers", "Templates\ViewHelpers.csproj", "{EAC902C0-F5D1-4667-B7FD-CD88332CA7EC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalendarPage", "DayNoteTile\CalendarPage.csproj", "{54E27D54-378B-4270-974B-35A0B61043EC}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalendarTile", "CalendarTitle\CalendarTile.csproj", "{A8CE1B30-6DEA-493D-86F6-8C439CB482B9}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{0F96009E-25DD-41F9-A2FB-D2B5F5952BEC}"
 EndProject
 Global
@@ -63,14 +59,6 @@ Global
 		{EAC902C0-F5D1-4667-B7FD-CD88332CA7EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EAC902C0-F5D1-4667-B7FD-CD88332CA7EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EAC902C0-F5D1-4667-B7FD-CD88332CA7EC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{54E27D54-378B-4270-974B-35A0B61043EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{54E27D54-378B-4270-974B-35A0B61043EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{54E27D54-378B-4270-974B-35A0B61043EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{54E27D54-378B-4270-974B-35A0B61043EC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A8CE1B30-6DEA-493D-86F6-8C439CB482B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A8CE1B30-6DEA-493D-86F6-8C439CB482B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A8CE1B30-6DEA-493D-86F6-8C439CB482B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A8CE1B30-6DEA-493D-86F6-8C439CB482B9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

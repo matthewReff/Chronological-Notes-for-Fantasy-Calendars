@@ -10,24 +10,17 @@ using System.Windows.Data;
 
 namespace ChronoCalendar
 {
-    public class DateToYearDisplayConverter : IValueConverter
+    public class DateToMonthDisplayConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (value != null && typeof(Date) == value.GetType())
-            {
-                Date convertedDate = value as Date;
-                return convertedDate.year.ToString();
-            }
-            else
-            {
-                return DependencyProperty.UnsetValue;
-            }
+            Date convertedDate = value as Date;
+            return convertedDate.month.ToString();
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return DependencyProperty.UnsetValue;
+            throw new NotImplementedException();
         }
     }
 

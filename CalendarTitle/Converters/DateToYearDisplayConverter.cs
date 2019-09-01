@@ -14,20 +14,17 @@ namespace ChronoCalendar
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (value != null && typeof(Date) == value.GetType())
+            if (value != null)
             {
                 Date convertedDate = value as Date;
                 return convertedDate.year.ToString();
             }
-            else
-            {
-                return DependencyProperty.UnsetValue;
-            }
+            return null;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return DependencyProperty.UnsetValue;
+            throw new NotImplementedException();
         }
     }
 

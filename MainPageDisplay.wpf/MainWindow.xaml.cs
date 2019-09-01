@@ -32,5 +32,12 @@ namespace MainPageDisplay.wpf
             DataContext = viewModel;
             InitializeComponent();
         }
+
+        private void CreateCalendarViewClick(object sender, RoutedEventArgs e)
+        {
+            var thing = new CalendarPage();
+            thing.Owner = this;
+            thing.Show();
+        }
     }
 }

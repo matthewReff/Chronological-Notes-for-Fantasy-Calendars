@@ -1,0 +1,25 @@
+﻿<UserControl x:Class="ChronoCalendar.CalendarTile"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:ConverterNamespace="clr-namespace:ChronoCalendar;assembly=ViewHelpers"
+        xmlns:UserControlsNamespace="clr-namespace:ChronoCalendar"
+        xmlns:local="clr-namespace:ChronoCalendar"
+        mc:Ignorable="d"
+        Height="450" Width="800">
+
+    <UserControl.Resources>
+       
+    </UserControl.Resources>
+
+    <StackPanel>
+        <local:DateDisplay />
+        <ListView Name="NoteListView"
+                  SelectedIndex="{Binding SelectedNoteIndex}"
+                  ItemsSource="{Binding TimelineField}"
+                  ItemTemplate="{StaticResource TileItemTemplate}"
+                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                  />
+    </StackPanel>
+</UserControl>

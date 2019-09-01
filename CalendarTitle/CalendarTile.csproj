@@ -6,7 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{A8CE1B30-6DEA-493D-86F6-8C439CB482B9}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>CalendarTile</RootNamespace>
+    <RootNamespace>ChronoCalendar</RootNamespace>
     <AssemblyName>CalendarTile</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -55,7 +55,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="MainWindow.xaml">
+    <Page Include="DateDisplay.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="CalendarTile.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -63,8 +67,16 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
+    <Compile Include="Converters\DateToDayDisplayConverter.cs" />
+    <Compile Include="Converters\DateToHourDisplayConverter.cs" />
+    <Compile Include="Converters\DateToMinuteDisplayConverter.cs" />
+    <Compile Include="Converters\DateToMonthDisplayConverter.cs" />
+    <Compile Include="Converters\DateToYearDisplayConverter.cs" />
+    <Compile Include="DateDisplay.xaml.cs">
+      <DependentUpon>DateDisplay.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CalendarTile.xaml.cs">
+      <DependentUpon>CalendarTile.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -95,6 +107,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\SharedDataStructures\SharedDataStructures.csproj">
+      <Project>{daa28e6b-edd4-4a06-b780-dddd5ea42ad3}</Project>
+      <Name>SharedDataStructures</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Templates\ViewHelpers.csproj">
       <Project>{eac902c0-f5d1-4667-b7fd-cd88332ca7ec}</Project>
       <Name>ViewHelpers</Name>

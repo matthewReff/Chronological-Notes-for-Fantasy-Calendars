@@ -10,7 +10,7 @@ namespace ChronoCalendar
 {
     public partial class Timeline : IEnumerable, ICollection, INotifyCollectionChanged
     {
-        Timeline GetNotesFromDay(Date date)
+        public Timeline GetNotesFromDay(Date date)
         {
             Timeline returnTimeline = new Timeline();
 
@@ -23,7 +23,7 @@ namespace ChronoCalendar
                     returnTimeline.Add(note);
                 }
             }
-            return new Timeline();
+            return returnTimeline;
         }
     }
 }
