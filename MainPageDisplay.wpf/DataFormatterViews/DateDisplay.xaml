@@ -10,21 +10,6 @@
     <UserControl.Resources>
     </UserControl.Resources>
 
-    <StackPanel Orientation="Horizontal">
-        <TextBlock Style="{StaticResource ListViewItemTextBlock}"
-                   Text="{Binding Date, Mode=OneWay, Converter={StaticResource YearConverter}}"
-                   FontSize="10" />
-        <TextBlock Style="{StaticResource ListViewItemTextBlock}"
-                   Text="/"
-                   FontSize="10" />
-        <TextBlock Style="{StaticResource ListViewItemTextBlock}"
-                   Text="{Binding Date, Mode=OneWay, Converter={StaticResource MonthConverter}}"
-                   FontSize="10" />
-        <TextBlock Style="{StaticResource ListViewItemTextBlock}"
-                   Text="/"
-                   FontSize="10" />
-        <TextBlock Style="{StaticResource ListViewItemTextBlock}"
-                   Text="{Binding Date, Mode=OneWay, Converter={StaticResource DayConverter}}"
-                   FontSize="10" />
-    </StackPanel>
+    <TextBlock 
+        x:Name="dateDisplayText"/>
 </UserControl>

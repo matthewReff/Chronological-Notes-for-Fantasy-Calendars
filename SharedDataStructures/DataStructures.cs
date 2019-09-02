@@ -80,6 +80,17 @@ namespace ChronoCalendar
 
         public static bool operator <(Date left, Date right)
         {
+            if (left is null || right is null)
+            {
+                if (right != null)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
             if (left.year == right.year)
             {
                 if(left.month == right.month)
@@ -111,6 +122,17 @@ namespace ChronoCalendar
 
         public static bool operator >(Date left, Date right) // null < value
         {
+            if(left is null || right is null)
+            {
+                if (left != null)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
             if (left.year == right.year)
             {
                 if (left.month == right.month)
@@ -142,6 +164,14 @@ namespace ChronoCalendar
 
         public static bool operator ==(Date left, Date right)
         {
+            if(left is null ^ right is null)
+            {
+                return false;
+            }
+            if(left is null && right is null)
+            {
+                return true;
+            }
             return (left.year == right.year &&
                 left.month == right.month &&
                 left.day == right.day &&
@@ -151,15 +181,16 @@ namespace ChronoCalendar
 
         public static bool operator !=(Date left, Date right)
         {
-            return !(left.year == right.year &&
-                left.month == right.month &&
-                left.day == right.day &&
-                left.minute == right.minute &&
-                left.hour == right.hour);
+
+            return !(left == right);
         }
 
         public override bool Equals(object obj)
         {
+            if(obj is null)
+            {
+                return false;
+            }
             if (obj.GetType() != typeof(Date))
             {
                 return false;
@@ -174,7 +205,7 @@ namespace ChronoCalendar
         public string Title { get; set; }
         public string Content { get; set; }
 
-        public Note(Date _date, string _title, string _content)
+        public Note(Date _date, string _title, string _content = null)
         {
             Date = _date;
             Title = _title;
@@ -203,19 +234,25 @@ namespace ChronoCalendar
 
         public static bool operator ==(Note left, Note right)
         {
+            if (left is null ^ right is null)
+            {
+                return false;
+            }
             return left.Date == right.Date && 
                 left.Title == right.Title &&
                 left.Content == right.Content;
         }
         public static bool operator !=(Note left, Note right)
         {
-            return !(left.Date == right.Date &&
-                left.Title == right.Title &&
-                left.Content == right.Content);
+            return !(left == right);
         }
 
         public override bool Equals(object obj)
         {
+            if(obj is null)
+            {
+                return false;
+            }
             if(obj.GetType() != typeof(Note) )
             {
                 return false;

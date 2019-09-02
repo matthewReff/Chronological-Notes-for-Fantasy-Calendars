@@ -14,7 +14,7 @@
     </UserControl.Resources>
 
     <StackPanel>
-        <local:DateDisplay />
+        <local:DateDisplay DisplayedDate="{Binding Date}"/>
         <ListView Name="NoteListView"
                   SelectedIndex="{Binding SelectedNoteIndex}"
                   ItemsSource="{Binding TimelineField}"

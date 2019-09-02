@@ -97,8 +97,6 @@ namespace ChronoCalendar
                 _timelineList.Remove(currentNode);
                 Count--;
                 CollectionChanged?.Invoke(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Reset)); //TODO
-
-
             }
 
             return noteFound;

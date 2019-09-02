@@ -1,7 +1,7 @@
 ﻿<Application x:Class="MainPageDisplay.wpf.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:MainPageDisplay.wpf"
+             xmlns:local="clr-namespace:ChronoCalendar"
              xmlns:NoteNamespace="clr-namespace:ChronoCalendar;assembly=ViewModels"
              xmlns:TemplateNamespace="clr-namespace:ChronoCalendar;assembly=ViewHelpers"
              xmlns:ConverterNamespace="clr-namespace:ChronoCalendar;assembly=ViewHelpers"
@@ -109,7 +109,7 @@
                 </Grid>
             </DataTemplate>
 
-            <DataTemplate x:Key="TruncatedNoteTemplate"
+            <DataTemplate x:Key="NoteTemplate"
                           DataType="NoteNamespace:Note">
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -120,28 +120,12 @@
                         <RowDefinition Height="*" />
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
-                    <StackPanel Orientation="Horizontal"
-                                Grid.Column="0"
-                                Grid.Row="0"
-                                HorizontalAlignment="Center"
-                                VerticalAlignment="Stretch">
-                        <TextBlock Style="{StaticResource ListViewItemTextBlock}"
-                                   Text="{Binding Date, Mode=OneWay, Converter={StaticResource YearConverter}}"
-                                   FontSize="10" />
-                        <TextBlock Style="{StaticResource ListViewItemTextBlock}"
-                                   Text="/"
-                                   FontSize="10" />
-                        <TextBlock Style="{StaticResource ListViewItemTextBlock}"
-                                   Text="{Binding Date, Mode=OneWay, Converter={StaticResource MonthConverter}}"
-                                   FontSize="10" />
-                        <TextBlock Style="{StaticResource ListViewItemTextBlock}"
-                                   Text="/"
-                                   FontSize="10" />
-                        <TextBlock Style="{StaticResource ListViewItemTextBlock}"
-                                   Text="{Binding Date, Mode=OneWay, Converter={StaticResource DayConverter}}"
-                                   FontSize="10" />
-                    </StackPanel>
-
+                    <local:DateDisplay DisplayedDate="{Binding Date}"
+                                       Grid.Column="0"
+                                       Grid.Row="0"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Stretch" />
+                    
                     <TextBlock  Grid.Column="0"
                                 Grid.Row="1"
                                 Style="{StaticResource ListViewItemTextBlock}"
@@ -157,68 +141,7 @@
 
                 </Grid>
             </DataTemplate>
-
-            <DataTemplate x:Key="FullNoteTemplate"
-                          DataType="NoteNamespace:Note">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*" />
-                        <RowDefinition Height="*" />
-                        <RowDefinition Height="*" />
-                    </Grid.RowDefinitions>
-                    <StackPanel Orientation="Horizontal"
-                                Grid.Column="0"
-                                Grid.Row="0"
-                                HorizontalAlignment="Center"
-                                VerticalAlignment="Stretch">
-
-                        <TextBlock Style="{StaticResource ListViewItemTextBlock}"
-                                   Text="{Binding Date, Mode=OneWay, Converter={StaticResource YearConverter}}"
-                                   FontSize="10" />
-                        <TextBlock Style="{StaticResource ListViewItemTextBlock}"
-                                   Text="/"
-                                   FontSize="10" />
-                        <TextBlock Style="{StaticResource ListViewItemTextBlock}"
-                                   Text="{Binding Date, Mode=OneWay, Converter={StaticResource MonthConverter}}"
-                                   FontSize="10" />
-                        <TextBlock Style="{StaticResource ListViewItemTextBlock}"
-                                   Text="/"
-                                   FontSize="10" />
-                        <TextBlock Style="{StaticResource ListViewItemTextBlock}"
-                                   Text="{Binding Date, Mode=OneWay, Converter={StaticResource DayConverter}}"
-                                   FontSize="10" />
-                        <TextBlock Style="{StaticResource ListViewItemTextBlock}"
-                                   Text=" "
-                                   FontSize="10" />
-                        <TextBlock Style="{StaticResource ListViewItemTextBlock}"
-                                   Text="{Binding Date, Mode=OneWay, Converter={StaticResource HourConverter}}"
-                                   FontSize="10" />
-                        <TextBlock Style="{StaticResource ListViewItemTextBlock}"
-                                   Text=":"
-                                   FontSize="10" />
-                        <TextBlock Style="{StaticResource ListViewItemTextBlock}"
-                                   Text="{Binding Date, Mode=OneWay, Converter={StaticResource MinuteConverter}}"
-                                   FontSize="10" />
-
-                    </StackPanel>
-                    <TextBlock  Grid.Column="0"
-                                Grid.Row="1"
-                                Style="{StaticResource ListViewItemTextBlock}"
-                                Text="{Binding Title, Mode=OneWay}"
-                                FontSize="20"
-                                FontWeight="Bold" />
-
-                    <TextBlock  Grid.Column="0"
-                                Grid.Row="2"
-                                Style="{StaticResource ListViewItemTextBlock}"
-                                Text="{Binding Content, Mode=OneWay}"
-                                FontSize="20" />
-
-                </Grid>
-            </DataTemplate>
+            
         </ResourceDictionary>
     </Application.Resources>
 </Application>

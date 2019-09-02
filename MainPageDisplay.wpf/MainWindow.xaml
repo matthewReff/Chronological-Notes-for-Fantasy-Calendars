@@ -1,9 +1,9 @@
-﻿<Window x:Class="MainPageDisplay.wpf.MainWindow"
+﻿<Window x:Class="ChronoCalendar.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:MainPageDisplay.wpf"
+        xmlns:local="clr-namespace:ChronoCalendar"
         xmlns:NoteNamespace="clr-namespace:ChronoCalendar;assembly=ViewModels"
         xmlns:TemplateNamespace="clr-namespace:ChronoCalendar;assembly=ViewHelpers"
         xmlns:ConverterNamespace="clr-namespace:ChronoCalendar;assembly=ViewHelpers"
@@ -16,9 +16,6 @@
 
         
     </Window.Resources>
-    
-    
-    
         <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
@@ -156,8 +153,8 @@
                   SelectedIndex="{Binding SelectedNoteIndex}"
                   ItemsSource="{Binding TimelineField}"
                   ItemContainerStyle="{StaticResource ListViewItemStyle}"
+                  ItemTemplate="{StaticResource NoteTemplate}"
                   ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                  ItemTemplateSelector="{StaticResource NoteDataTemplateSelector}"
                   >
         </ListView>
     </Grid>

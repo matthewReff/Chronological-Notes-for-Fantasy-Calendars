@@ -46,6 +46,83 @@ namespace UnitTests
                 Assert.IsTrue(date.month == 1);
                 Assert.IsTrue(date.year == 1);
             }
+
+            [TestMethod]
+            public void DateEqualsToNull_WillNotCrash()
+            {
+                //arrange
+                Date date1 = new Date(1, 1, 1);
+                Date date2 = null;
+
+                //act
+
+                //assert
+                Assert.IsFalse(date1 == date2);
+            }
+
+            [TestMethod]
+            public void DateNotEqualToNull_WillNotCrash()
+            {
+                //arrange
+                Date date1 = new Date(1, 1, 1);
+                Date date2 = null;
+
+                //act
+
+                //assert
+                Assert.IsTrue(date1 != date2);
+            }
+
+            [TestMethod]
+            public void DateGreaterThanToNull_WillNotCrash()
+            {
+                //arrange
+                Date date1 = new Date(1, 1, 1);
+                Date date2 = null;
+
+                //act
+
+                //assert
+                Assert.IsTrue(date1 > date2);
+            }
+
+            [TestMethod]
+            public void DateLessThanToNull_WillNotCrash()
+            {
+                //arrange
+                Date date1 = new Date(1, 1, 1);
+                Date date2 = null;
+
+                //act
+
+                //assert
+                Assert.IsFalse(date1 < date2);
+            }
+            [TestMethod]
+            public void NoteEqualsToNull_WillNotCrash()
+            {
+                //arrange
+                Note note1 = new Note(new Date(1, 1, 1), "aaa");
+                Note note2 = null;
+
+                //act
+
+                //assert
+                Assert.IsFalse(note1 == note2);
+            }
+
+            [TestMethod]
+            public void NoteNotEqualToNull_WillNotCrash()
+            {
+                //arrange
+                Note note1 = new Note(new Date(1, 1, 1), "aaa");
+                Note note2 = null;
+
+                //act
+
+                //assert
+                Assert.IsTrue(note1 != note2);
+            }
         }
 
     }

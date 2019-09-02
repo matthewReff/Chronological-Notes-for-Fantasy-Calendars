@@ -66,17 +66,10 @@ namespace ChronoCalendar
                     Timeline derivedTimeline = viewModel.TimelineField.GetNotesFromDay(new Date(1, 1, currentTileIndex + 1));
                     CalendarTile tile = new CalendarTile(derivedTimeline);
 
-                    TextBlock textBlock = new TextBlock();
-                    int currentDay = currentTileIndex;
-                    textBlock.Text = currentDay.ToString();
-                    textBlock.HorizontalAlignment = HorizontalAlignment.Stretch;
-                    textBlock.VerticalAlignment = VerticalAlignment.Stretch;
-
                     Grid.SetRow(tile, i);
                     Grid.SetColumn(tile, j);
 
                     grid.Children.Add(tile);
-                    //grid.Children.Add(textBlock);
                 }
             }
 
