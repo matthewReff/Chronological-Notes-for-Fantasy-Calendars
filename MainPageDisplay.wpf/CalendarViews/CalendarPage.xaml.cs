@@ -73,7 +73,7 @@ namespace ChronoCalendar
                 }
             }
 
-            thing.Content = grid;
+            CalendarViewContent.Content = grid;
         }
 
     }

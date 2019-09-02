@@ -14,7 +14,6 @@ namespace UnitTests
         public class XMLDataAccessorTests
         {
             public TestContext TestContext { get; set; }
-            private TestContext _testContext;
 
             [TestMethod]
             public void DataAccessorExists_Test()

@@ -111,35 +111,21 @@
 
             <DataTemplate x:Key="NoteTemplate"
                           DataType="NoteNamespace:Note">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*" />
-                        <RowDefinition Height="*" />
-                        <RowDefinition Height="*" />
-                    </Grid.RowDefinitions>
+                <StackPanel Orientation="Vertical">
                     <local:DateDisplay DisplayedDate="{Binding Date}"
-                                       Grid.Column="0"
-                                       Grid.Row="0"
                                        HorizontalAlignment="Center"
                                        VerticalAlignment="Stretch" />
                     
-                    <TextBlock  Grid.Column="0"
-                                Grid.Row="1"
-                                Style="{StaticResource ListViewItemTextBlock}"
+                    <TextBlock  Style="{StaticResource ListViewItemTextBlock}"
                                 Text="{Binding Title, Mode=OneWay}"
                                 FontSize="20"
                                 FontWeight="Bold" />
 
-                    <TextBlock  Grid.Column="0"
-                                Grid.Row="2"
-                                Style="{StaticResource ListViewItemTextBlock}"
+                    <TextBlock  Style="{StaticResource ListViewItemTextBlock}"
                                 Text="{Binding Content, Mode=OneWay}"
                                 FontSize="20" />
 
-                </Grid>
+                </StackPanel>
             </DataTemplate>
             
         </ResourceDictionary>

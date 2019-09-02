@@ -12,11 +12,12 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
+            <RowDefinition Height="100" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <ContentPresenter x:Name="thing"
+        <ContentPresenter x:Name="CalendarViewContent"
                           Grid.Column="0"
-                          Grid.Row="0">
+                          Grid.Row="1">
 
         </ContentPresenter>
     </Grid>

@@ -224,11 +224,33 @@ namespace ChronoCalendar
 
         public static bool operator <(Note left, Note right)
         {
+            if (left is null || right is null)
+            {
+                if (right != null)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
             return left.Date < right.Date;
         }
 
         public static bool operator >(Note left, Note right)
         {
+            if (left is null || right is null)
+            {
+                if (left != null)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
             return left.Date > right.Date;
         }
 
@@ -237,6 +259,10 @@ namespace ChronoCalendar
             if (left is null ^ right is null)
             {
                 return false;
+            }
+            if (left is null && right is null)
+            {
+                return true;
             }
             return left.Date == right.Date && 
                 left.Title == right.Title &&

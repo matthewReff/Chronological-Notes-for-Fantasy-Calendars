@@ -9,7 +9,6 @@ namespace UnitTests
     public class TimelineStructureTest
     {
         public TestContext TestContext { get; set; }
-        private TestContext _testContext;
 
         [TestMethod]
         public void InitializeTimelineTest()

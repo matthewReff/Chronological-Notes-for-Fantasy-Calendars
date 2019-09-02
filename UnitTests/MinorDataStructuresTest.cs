@@ -12,7 +12,6 @@ namespace UnitTests
         public class DateTests
         {
             public TestContext TestContext { get; set; }
-            private TestContext _testContext;
 
             [TestMethod]
             public void ValuedInitializeDate_AllValuesTest ()
@@ -47,6 +46,7 @@ namespace UnitTests
                 Assert.IsTrue(date.year == 1);
             }
 
+            #region DateCompareNullChecks
             [TestMethod]
             public void DateEqualsToNull_WillNotCrash()
             {
@@ -98,6 +98,9 @@ namespace UnitTests
                 //assert
                 Assert.IsFalse(date1 < date2);
             }
+            #endregion
+
+            #region NoteCompareNullChecks
             [TestMethod]
             public void NoteEqualsToNull_WillNotCrash()
             {
@@ -123,7 +126,33 @@ namespace UnitTests
                 //assert
                 Assert.IsTrue(note1 != note2);
             }
-        }
 
+            [TestMethod]
+            public void NoteGreaterThanToNull_WillNotCrash()
+            {
+                //arrange
+                Note note1 = new Note(new Date(1, 1, 1), "aaa");
+                Note note2 = null;
+
+                //act
+
+                //assert
+                Assert.IsTrue(note1 > note2);
+            }
+
+            [TestMethod]
+            public void NoteLessThanToNull_WillNotCrash()
+            {
+                //arrange
+                Note note1 = new Note(new Date(1, 1, 1), "aaa");
+                Note note2 = null;
+
+                //act
+
+                //assert
+                Assert.IsFalse(note1 < note2);
+            }
+            #endregion
+        }
     }
 }
