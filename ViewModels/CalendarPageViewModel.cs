@@ -13,15 +13,12 @@ namespace ChronoCalendar
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public CalendarPageViewModel()
+        public CalendarPageViewModel(Timeline parentTimeline)
         {
-            DataAccessor temp = new DataAccessor("Calendar");
-            temp.LoadTimeline(out _timelineField);
-            //NoteCreateButtonClick = new BindableCommand(OnNoteCreateButtonClick);
+            _timelineField = parentTimeline;
         }
 
         #region Bindable Commands
-        //public BindableCommand NoteCreateButtonClick { get; set; }
         #endregion
 
         #region Fields
@@ -58,24 +55,6 @@ namespace ChronoCalendar
                     tempCollection.Add(note);
                 }
                 return tempCollection;
-            }
-
-        }
-
-        public Dictionary<Date, Timeline> TileTimelines
-        {
-            get
-            {
-                return _tileTimelines;
-            }
-
-        }
-
-        public Date Date
-        {
-            get
-            {
-                return ObservableTimelineField[0].Date;
             }
 
         }

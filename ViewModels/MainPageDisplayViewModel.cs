@@ -39,7 +39,7 @@ namespace ChronoCalendar
         private string _titleField = "The GM is angered";
         private string _contentField = "Rocks fall, and everyone dies.";
         private string _dateField = "1.1.2.3.1";
-        private string _filePathField = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)  + "\\example";
+        private string _filePathField = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "\\SavedCalendars\\example";
 
         private DataAccessor _dataAccessorField;
         private Timeline _timelineField = new Timeline();
@@ -167,7 +167,6 @@ namespace ChronoCalendar
                 }
             }
         }
-
         #endregion
 
         #endregion

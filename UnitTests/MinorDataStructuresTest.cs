@@ -1,5 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using ChronoCalendar;
+﻿using ChronoCalendar;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace UnitTests
 {
@@ -98,6 +98,18 @@ namespace UnitTests
                 //assert
                 Assert.IsFalse(date1 < date2);
             }
+
+            [TestMethod]
+            public void DateGetHashCodeExists()
+            {
+                //arrange
+                Date date = new Date(1, 1, 1);
+
+                //act
+
+                //assert
+                date.GetHashCode();
+            }
             #endregion
 
             #region NoteCompareNullChecks
@@ -151,6 +163,18 @@ namespace UnitTests
 
                 //assert
                 Assert.IsFalse(note1 < note2);
+            }
+
+            [TestMethod]
+            public void NoteGetHashCodeExists()
+            {
+                //arrange
+                Note note = new Note(new Date(1, 1, 1), "aaa");
+
+                //act
+
+                //assert
+                note.GetHashCode();
             }
             #endregion
         }

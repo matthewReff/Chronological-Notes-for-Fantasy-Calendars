@@ -27,9 +27,9 @@
 
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
+            <RowDefinition Height=".3*" />
             <RowDefinition Height=".5*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height=".5*" />
+            <RowDefinition Height=".3*" />
             <RowDefinition Height="*" />
             <RowDefinition Height="*" />
             <RowDefinition Height="*" />
@@ -41,13 +41,24 @@
                    Text="Filepath"
                    Grid.ColumnSpan="3"
                    Style="{StaticResource LabelStyle}"/>
-
-        <TextBox Name="FilepathTextBox"
-                 Grid.Column="0"
-                 Grid.Row="1"
-                 Grid.ColumnSpan="3"
-                 Text="{Binding FilePathField, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                 Style="{StaticResource LongTextBoxStyle}" />
+        <Grid Grid.Row="1"
+              Grid.Column="0"
+              Grid.ColumnSpan="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="100" />
+            </Grid.ColumnDefinitions>
+            <TextBox Name="FilepathTextBox"
+                     Grid.Column="0"
+                     Grid.Row="0"
+                     Text="{Binding FilePathField, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                     Style="{StaticResource LongTextBoxStyle}"
+                     TextWrapping="Wrap"/>
+            <Button Grid.Column="1"
+                    Grid.Row="0"
+                    Content="Open File Browser" 
+                    Click="CreteFileViewerButtonClick" />
+        </Grid>
 
         <TextBlock Name="DateTextBoxLabel"
                    Grid.Column="0"

@@ -22,9 +22,9 @@ namespace ChronoCalendar
     public partial class CalendarPage : Window
     {
         private CalendarPageViewModel viewModel;
-        public CalendarPage()
+        public CalendarPage(Timeline timeline)
         {
-            viewModel = new CalendarPageViewModel();
+            viewModel = new CalendarPageViewModel(timeline);
 
             //NoteListView += ContentCollectionChanged;
 
