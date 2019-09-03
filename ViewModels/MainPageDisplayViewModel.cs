@@ -21,6 +21,13 @@ namespace ChronoCalendar
             SaveFileButtonClick = new BindableCommand(OnSaveFileButtonClick);
             EditNoteButtonClick = new BindableCommand(OnEditNoteButtonClick);
             RemoveNoteButtonClick = new BindableCommand(OnRemoveNoteButtonClick);
+
+
+            string directoryName = Path.GetDirectoryName(FilePathField);
+            if (!File.Exists(directoryName))
+            { 
+                Directory.CreateDirectory(directoryName);
+            }
         }
 
         #region Bindable Commands
@@ -39,7 +46,7 @@ namespace ChronoCalendar
         private string _titleField = "The GM is angered";
         private string _contentField = "Rocks fall, and everyone dies.";
         private string _dateField = "1.1.2.3.1";
-        private string _filePathField = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "\\SavedCalendars\\example";
+        private string _filePathField = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "\\SavedCalendars\\Sample Name";
 
         private DataAccessor _dataAccessorField;
         private Timeline _timelineField = new Timeline();
@@ -151,8 +158,14 @@ namespace ChronoCalendar
                 {
                     _filePathField = value;
                     OnPropertyChanged();
+                    OnPropertyChanged("DisplayedFile");
                 }
             }
+        }
+
+        public string DisplayedFile
+        {
+            get { return Path.GetFileName(_filePathField); }
         }
 
         public DataAccessor DataAccessorField

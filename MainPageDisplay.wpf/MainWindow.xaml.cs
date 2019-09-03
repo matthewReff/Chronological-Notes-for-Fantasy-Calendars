@@ -31,6 +31,7 @@ namespace ChronoCalendar
             //NoteListView += ContentCollectionChanged;
 
             DataContext = viewModel;
+
             InitializeComponent();
         }
 
@@ -44,7 +45,8 @@ namespace ChronoCalendar
         private void CreteFileViewerButtonClick(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.InitialDirectory = Path.GetDirectoryName(viewModel.FilePathField);
+            string currentPathDirectory = Path.GetDirectoryName(viewModel.FilePathField);
+            openFileDialog.InitialDirectory = currentPathDirectory;
             openFileDialog.ShowDialog();
             if(openFileDialog.FileName != "")
             {

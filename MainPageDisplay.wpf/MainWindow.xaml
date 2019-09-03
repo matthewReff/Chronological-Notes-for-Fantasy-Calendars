@@ -13,9 +13,8 @@
         Width="1400">
 
     <Window.Resources>
-
-        
     </Window.Resources>
+    
         <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
@@ -48,12 +47,16 @@
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="100" />
             </Grid.ColumnDefinitions>
-            <TextBox Name="FilepathTextBox"
-                     Grid.Column="0"
-                     Grid.Row="0"
-                     Text="{Binding FilePathField, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                     Style="{StaticResource LongTextBoxStyle}"
-                     TextWrapping="Wrap"/>
+            <Border>
+                <TextBlock Name="FilepathTextBox"
+                           Grid.Column="0"
+                           Grid.Row="0"
+                           Text="{Binding DisplayedFile}"
+                           Style="{StaticResource LongTextBlockStyle}"
+                           TextWrapping="Wrap"
+                           TextAlignment="Center"
+                           VerticalAlignment="Center" />
+            </Border>
             <Button Grid.Column="1"
                     Grid.Row="0"
                     Content="Open File Browser" 
@@ -79,15 +82,15 @@
                    TextWrapping="Wrap"
                    FontSize="18"
                    Style="{StaticResource LabelStyle}" />
-        
+
         <TextBlock Name="StatusTextBlock"
-                 Grid.Column="0"
-                 Grid.Row="5"
+                   Grid.Column="0"
+                   Grid.Row="5"
                    Grid.ColumnSpan="3"
                    TextWrapping="Wrap"
-                 Text="{Binding Status, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                   Text="{Binding Status, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                    Style="{StaticResource LabelStyle}" />
-        
+
 
         <TextBlock Name="TitleTextBoxLabel"
                    Grid.Column="1"
