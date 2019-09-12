@@ -42,8 +42,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AdvancedTimelineMethods.cs" />
+    <Compile Include="AdvancedDate.cs" />
     <Compile Include="Note.cs" />
-    <Compile Include="TimelineDataStructure.cs" />
+    <Compile Include="Timeline.cs" />
     <Compile Include="Date.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

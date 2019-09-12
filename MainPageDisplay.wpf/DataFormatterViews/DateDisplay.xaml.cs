@@ -19,8 +19,6 @@ namespace ChronoCalendar
                .AddValueChanged(this, OnDateChanged);
         }
 
-
-
         public static readonly DependencyProperty DisplayedDateProperty =
         DependencyProperty.Register
             (

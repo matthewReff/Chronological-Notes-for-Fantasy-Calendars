@@ -12,10 +12,15 @@ namespace ChronoCalendar
     public class CalendarPageViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
+        public event EventHandler CalendarDateChanged;
 
-        public CalendarPageViewModel(Timeline parentTimeline)
+        public CalendarPageViewModel(Timeline parentTimeline, CalendarConfiguration config, Date initialDate)
         {
             _timelineField = parentTimeline;
+            _config = config;
+            _advancedDate = new AdvancedDate(initialDate, config);
+            MoveCalendarForwardClick = new BindableCommand(OnMoveCalendarForwardButtonClick);
+            MoveCalendarBackwardClick = new BindableCommand(OnMoveCalendarBackwardClick);
         }
 
         #region Bindable Commands
@@ -26,6 +31,8 @@ namespace ChronoCalendar
         #region Backing Members
 
         private Timeline _timelineField = new Timeline();
+        private CalendarConfiguration _config;
+        private AdvancedDate _advancedDate;
         private Dictionary<Date, Timeline> _tileTimelines = new Dictionary<Date, Timeline>();
         #endregion
 
@@ -59,9 +66,34 @@ namespace ChronoCalendar
 
         }
 
+        public Date DisplayDate { get { return _advancedDate.Date; } }
+
+        public AdvancedDate Date { get { return _advancedDate; } }
+
+        public CalendarConfiguration Config { get { return _config; } }
+
         #endregion
 
         #endregion
+
+        private void OnMoveCalendarForwardButtonClick()
+        {
+            _advancedDate.AddMonths(1);
+            OnPropertyChanged("Date");
+            OnPropertyChanged("DisplayDate");
+            CalendarDateChanged?.Invoke(this, new EventArgs());
+        }
+        private void OnMoveCalendarBackwardClick()
+        {
+            _advancedDate.AddMonths(-1);
+            OnPropertyChanged("Date");
+            OnPropertyChanged("DisplayDate");
+            CalendarDateChanged?.Invoke(this, new EventArgs());
+        }
+
+        public BindableCommand MoveCalendarForwardClick { get; set; }
+        public BindableCommand MoveCalendarBackwardClick { get; set; }
+
 
         protected void OnPropertyChanged([CallerMemberName]string obj = null)
         {

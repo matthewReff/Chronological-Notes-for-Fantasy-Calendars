@@ -52,7 +52,7 @@ namespace ChronoCalendar
         private Timeline _timelineField = new Timeline();
         private int _selectedNoteIndex = -1;
         private string _status = string.Empty;
-
+        private Date _currentDate = new Date(1, 1, 1);
         #endregion
 
         #region Properties
@@ -179,6 +179,12 @@ namespace ChronoCalendar
                     OnPropertyChanged();
                 }
             }
+        }
+
+        public Date CurrentDate
+        {
+            get { return _currentDate; }
+            set { _currentDate = value; }
         }
         #endregion
 

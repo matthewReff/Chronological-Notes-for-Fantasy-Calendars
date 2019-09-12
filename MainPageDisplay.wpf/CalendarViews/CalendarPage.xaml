@@ -15,6 +15,28 @@
             <RowDefinition Height="100" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
+        <Grid Grid.Row="0"
+              Grid.Column="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="100" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="100" />
+                <ColumnDefinition Width="*" />
+
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="1"
+                    Content="back"
+                    Command="{Binding MoveCalendarBackwardClick}"/>
+            <local:DateDisplay Grid.Column="2"
+                               DisplayedDate="{Binding DisplayDate}"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"/>
+            <Button Grid.Column="3"
+                    Content="forward"
+                    Command="{Binding MoveCalendarForwardClick}" />
+
+        </Grid>
         <ContentPresenter x:Name="CalendarViewContent"
                           Grid.Column="0"
                           Grid.Row="1">

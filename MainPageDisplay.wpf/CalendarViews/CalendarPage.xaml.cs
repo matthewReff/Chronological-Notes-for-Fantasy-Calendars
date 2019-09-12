@@ -22,10 +22,10 @@ namespace ChronoCalendar
     public partial class CalendarPage : Window
     {
         private CalendarPageViewModel viewModel;
-        public CalendarPage(Timeline timeline)
+        public CalendarPage(Timeline timeline, CalendarConfiguration config, Date initialDate)
         {
-            viewModel = new CalendarPageViewModel(timeline);
-
+            viewModel = new CalendarPageViewModel(timeline, config, initialDate);
+            viewModel.CalendarDateChanged += ViewModel_CalendarDateChanged;
             //NoteListView += ContentCollectionChanged;
 
             DataContext = viewModel;
@@ -35,13 +35,18 @@ namespace ChronoCalendar
             ReloadCalendar();
         }
 
+        private void ViewModel_CalendarDateChanged(object sender, EventArgs e)
+        {
+            ReloadCalendar();
+        }
+
         void ReloadCalendar()
         {
-            int daysInMonth = 31;
-            int daysInWeek = 7;
+            int daysInMonth = viewModel.Config.MonthDays;
+            int daysInWeek = viewModel.Config.WeekDays;
             int rowsAdded = 0;
             Grid grid = new Grid();
-            grid.ShowGridLines = true;
+            grid.ShowGridLines = false;
 
             while(daysInMonth > 0)
             {
@@ -51,6 +56,7 @@ namespace ChronoCalendar
 
             for(int i = 0; i < rowsAdded; i++)
             {
+                grid.RowDefinitions.Add(new RowDefinition());
                 grid.RowDefinitions.Add(new RowDefinition());
             }
             for(int i = 0; i < daysInWeek; i++)
@@ -63,7 +69,8 @@ namespace ChronoCalendar
                 for(int j = 0; j < daysInWeek; j++)
                 {
                     int currentTileIndex = i * daysInWeek + j;
-                    Timeline derivedTimeline = viewModel.TimelineField.GetNotesFromDay(new Date(1, 1, currentTileIndex + 1));
+                    Date day = new Date(viewModel.Date.Date.year, viewModel.Date.Date.month, currentTileIndex + 1);
+                    Timeline derivedTimeline = viewModel.TimelineField.GetNotesFromDay(day);
                     CalendarTile tile = new CalendarTile(derivedTimeline);
 
                     Grid.SetRow(tile, i);
@@ -75,7 +82,6 @@ namespace ChronoCalendar
 
             CalendarViewContent.Content = grid;
         }
-
     }
 
 }

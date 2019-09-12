@@ -37,7 +37,7 @@ namespace ChronoCalendar
 
         private void CreateCalendarViewClick(object sender, RoutedEventArgs e)
         {
-            var thing = new CalendarPage(viewModel.TimelineField);
+            var thing = new CalendarPage(viewModel.TimelineField, new CalendarConfiguration(), viewModel.CurrentDate);
             thing.Owner = this;
             thing.Show();
         }
