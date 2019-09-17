@@ -10,7 +10,7 @@ Planned Features:
  
 >[X]Notes assigned to a given date/time
   
->Notes viewable on the calandar
+>[X]Notes viewable on the calandar
   
 >Scrolling timeline with voluntary jump to specific times
   
