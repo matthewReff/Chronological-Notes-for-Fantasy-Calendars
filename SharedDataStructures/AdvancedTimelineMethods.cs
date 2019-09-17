@@ -16,9 +16,9 @@ namespace ChronoCalendar
 
             foreach(Note note in _timelineList)
             {
-                if(date.year == note.Date.year && 
-                    date.month == note.Date.month && 
-                    date.day == note.Date.day)
+                if(date.Year == note.Date.Year && 
+                    date.Month == note.Date.Month && 
+                    date.Day == note.Date.Day)
                 {
                     returnTimeline.Add(note);
                 }

@@ -19,7 +19,7 @@ namespace ChronoCalendar
             {
                 Note noteItem = item as Note;
 
-                if (noteItem.Date.minute == null)
+                if (noteItem.Date.Minute == null)
                     return
                         element.FindResource("TruncatedNoteTemplate") as DataTemplate;
                 else

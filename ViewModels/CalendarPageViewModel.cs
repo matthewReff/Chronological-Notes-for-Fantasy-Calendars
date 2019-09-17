@@ -66,8 +66,14 @@ namespace ChronoCalendar
 
         }
 
-        public Date DisplayDate { get { return _advancedDate.Date; } }
-
+        public string TitleDateDisplayString
+        {
+            get
+            {
+                Date temp2 = _advancedDate.Date;
+                return temp2.ToString();
+            }
+        }
         public AdvancedDate Date { get { return _advancedDate; } }
 
         public CalendarConfiguration Config { get { return _config; } }

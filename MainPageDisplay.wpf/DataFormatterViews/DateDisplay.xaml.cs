@@ -15,8 +15,6 @@ namespace ChronoCalendar
         {
             InitializeComponent();
 
-            DependencyPropertyDescriptor.FromProperty(DisplayedDateProperty, typeof(DateDisplay))
-               .AddValueChanged(this, OnDateChanged);
         }
 
         public static readonly DependencyProperty DisplayedDateProperty =
@@ -25,10 +23,7 @@ namespace ChronoCalendar
             nameof(DisplayedDate),
             typeof(Date),
             typeof(DateDisplay),
-            new FrameworkPropertyMetadata
-                (
-                    null
-                )
+            new PropertyMetadata(null, new PropertyChangedCallback(OnChange))
             );
 
 
@@ -38,26 +33,33 @@ namespace ChronoCalendar
             set { SetValue(DisplayedDateProperty, value); }
         }
 
-        private void OnDateChanged(object sender, EventArgs e)
+        private static void OnChange(DependencyObject d,
+         DependencyPropertyChangedEventArgs e)
+        {
+            DateDisplay UserControl1Control = d as DateDisplay;
+            UserControl1Control.SecondLayerChanged(e);
+        }
+        private void SecondLayerChanged(DependencyPropertyChangedEventArgs e)
         {
             string content = "";
-            if(DisplayedDate != null)
+            if (DisplayedDate != null)
             {
-                content += DisplayedDate.year.ToString();
+                content += DisplayedDate.Year.ToString();
                 content += "\\";
-                content += DisplayedDate.month.ToString();
+                content += DisplayedDate.Month.ToString();
                 content += "\\";
-                content += DisplayedDate.day.ToString();
-                if(DisplayedDate.hour != null)
+                content += DisplayedDate.Day.ToString();
+                if (DisplayedDate.Hour != null)
                 {
                     content += " ";
-                    content += DisplayedDate.hour.ToString();
+                    content += DisplayedDate.Hour.ToString();
                     content += ":";
-                    content += DisplayedDate.minute.ToString();
+                    content += DisplayedDate.Minute.ToString();
                 }
             }
 
             dateDisplayText.Text = content;
         }
+
     }
 }

@@ -27,7 +27,7 @@
     <MapFileExtensions>true</MapFileExtensions>
     <TargetCulture>en-US</TargetCulture>
     <AutorunEnabled>true</AutorunEnabled>
-    <ApplicationRevision>14</ApplicationRevision>
+    <ApplicationRevision>15</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -166,6 +166,10 @@
     <ProjectReference Include="..\DataAccessor\DataAccessors.csproj">
       <Project>{b738bf22-1a23-4f5a-88df-1ea19ad33180}</Project>
       <Name>DataAccessors</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Interfaces\Interfaces.csproj">
+      <Project>{b7a191ed-6589-4d29-9202-b6fc3dc62c16}</Project>
+      <Name>Interfaces</Name>
     </ProjectReference>
     <ProjectReference Include="..\SharedDataStructures\SharedDataStructures.csproj">
       <Project>{DAA28E6B-EDD4-4A06-B780-DDDD5EA42AD3}</Project>

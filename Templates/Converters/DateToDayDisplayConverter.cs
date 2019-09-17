@@ -18,7 +18,7 @@ namespace ChronoCalendar
             if (value != null && typeof(Date) == value.GetType())
             {
                 Date convertedDate = value as Date;
-                return convertedDate.day.ToString();
+                return convertedDate.Day.ToString();
             }
             else
             {

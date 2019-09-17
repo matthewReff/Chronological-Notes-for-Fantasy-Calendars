@@ -10,6 +10,5 @@
     <UserControl.Resources>
     </UserControl.Resources>
 
-    <TextBlock 
-        x:Name="dateDisplayText"/>
+    <TextBlock x:Name="dateDisplayText" />
 </UserControl>

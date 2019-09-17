@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ChronoCalendar;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
@@ -8,53 +9,53 @@ using System.Runtime.CompilerServices;
 
 namespace ChronoCalendar
 {
-    public class Date
+    public class Date : IGetDateProperties
     {
-        public int year;
-        public int month;
-        public int day;
-        public int? hour;
-        public int? minute;
+        public int Year { get; set; }
+        public int Month { get; set; }
+        public int Day { get; set; }
+        public int? Hour { get; set; }
+        public int? Minute { get; set; }
 
-        
+
         #region Constructors
         public Date(int _year, int _month, int _day, int? _hour, int? _minute)
         {
-            day = _day;
-            month = _month;
-            year = _year;
-            hour = _hour;
-            minute = _minute;
+            Day = _day;
+            Month = _month;
+            Year = _year;
+            Hour = _hour;
+            Minute = _minute;
         }
 
         public Date(int _year, int _month, int _day)
         {
-            day = _day;
-            month = _month;
-            year = _year;
-            hour = null;
-            minute = null;
+            Day = _day;
+            Month = _month;
+            Year = _year;
+            Hour = null;
+            Minute = null;
         }
         #endregion
         public bool IsValidDate()
         {
-            if (day <= 0)
+            if (Day <= 0)
             {
                 return false;
             }
-            else if (month <= 0)
+            else if (Month <= 0)
             {
                 return false;
             }
-            else if (year <= 0)
+            else if (Year <= 0)
             {
                 return false;
             }
-            else if (minute < 0)
+            else if (Minute < 0)
             {
                 return false;
             }
-            else if (hour < 0)
+            else if (Hour < 0)
             {
                 return false;
             }
@@ -64,15 +65,15 @@ namespace ChronoCalendar
         public override string ToString()
         {
             string outputString = string.Empty;
-            outputString += year.ToString();
+            outputString += Year.ToString();
             outputString += "/";
-            outputString += month.ToString();
+            outputString += Month.ToString();
             outputString += "/";
-            outputString += day.ToString();
+            outputString += Day.ToString();
             outputString += " ";
-            outputString += hour.ToString();
+            outputString += Hour.ToString();
             outputString += ":";
-            outputString += minute.ToString();
+            outputString += Minute.ToString();
 
 
             return outputString;
@@ -91,33 +92,33 @@ namespace ChronoCalendar
                     return false;
                 }
             }
-            if (left.year == right.year)
+            if (left.Year == right.Year)
             {
-                if(left.month == right.month)
+                if(left.Month == right.Month)
                 {
-                    if (left.day == right.day)
+                    if (left.Day == right.Day)
                     {
-                        if (left.hour == null && right.hour != null)
+                        if (left.Hour == null && right.Hour != null)
                         {
                             return true;
                         }
-                        else if (left.hour != null && right.hour == null)
+                        else if (left.Hour != null && right.Hour == null)
                         {
                             return false;
                         }
                         else
                         {
-                            if (left.hour == right.hour)
+                            if (left.Hour == right.Hour)
                             {
-                                return left.minute < right.minute;
+                                return left.Minute < right.Minute;
                             }
                         }
                     }
-                    return left.day < right.day;
+                    return left.Day < right.Day;
                 }
-                return left.month < right.month;
+                return left.Month < right.Month;
             }
-            return left.year < right.year;
+            return left.Year < right.Year;
         }
 
         public static bool operator >(Date left, Date right) // null < value
@@ -133,33 +134,33 @@ namespace ChronoCalendar
                     return false;
                 }
             }
-            if (left.year == right.year)
+            if (left.Year == right.Year)
             {
-                if (left.month == right.month)
+                if (left.Month == right.Month)
                 {
-                    if (left.day == right.day)
+                    if (left.Day == right.Day)
                     {
-                        if (left.hour == null && right.hour != null)
+                        if (left.Hour == null && right.Hour != null)
                         {
                             return false;
                         }
-                        else if (left.hour != null && right.hour == null)
+                        else if (left.Hour != null && right.Hour == null)
                         {
                             return true;
                         }
                         else
                         {
-                            if (left.hour == right.hour)
+                            if (left.Hour == right.Hour)
                             {
-                                return left.minute > right.minute;
+                                return left.Minute > right.Minute;
                             }
                         }
                     }
-                    return left.day > right.day;
+                    return left.Day > right.Day;
                 }
-                return left.month > right.month;
+                return left.Month > right.Month;
             }
-            return left.year > right.year;
+            return left.Year > right.Year;
         }
 
         public static bool operator ==(Date left, Date right)
@@ -172,11 +173,11 @@ namespace ChronoCalendar
             {
                 return true;
             }
-            return (left.year == right.year &&
-                left.month == right.month &&
-                left.day == right.day &&
-                left.minute == right.minute && 
-                left.hour == right.hour);
+            return (left.Year == right.Year &&
+                left.Month == right.Month &&
+                left.Day == right.Day &&
+                left.Minute == right.Minute && 
+                left.Hour == right.Hour);
         }
 
         public static bool operator !=(Date left, Date right)

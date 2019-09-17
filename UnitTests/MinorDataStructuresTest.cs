@@ -23,11 +23,11 @@ namespace UnitTests
                 TestContext.WriteLine(date.ToString());
 
                 //assert
-                Assert.IsTrue(date.year == 1);
-                Assert.IsTrue(date.month == 1 );
-                Assert.IsTrue(date.day == 1 );
-                Assert.IsTrue(date.hour == 0);
-                Assert.IsTrue(date.minute == 0);
+                Assert.IsTrue(date.Year == 1);
+                Assert.IsTrue(date.Month == 1 );
+                Assert.IsTrue(date.Day == 1 );
+                Assert.IsTrue(date.Hour == 0);
+                Assert.IsTrue(date.Minute == 0);
 
             }
 
@@ -41,9 +41,9 @@ namespace UnitTests
                 TestContext.WriteLine(date.ToString());
 
                 //assert
-                Assert.IsTrue(date.day == 1);
-                Assert.IsTrue(date.month == 1);
-                Assert.IsTrue(date.year == 1);
+                Assert.IsTrue(date.Day == 1);
+                Assert.IsTrue(date.Month == 1);
+                Assert.IsTrue(date.Year == 1);
             }
 
             #region DateCompareNullChecks

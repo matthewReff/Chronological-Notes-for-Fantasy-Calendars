@@ -48,11 +48,11 @@
                 <ColumnDefinition Width="100" />
             </Grid.ColumnDefinitions>
             <Border>
-                <TextBlock Name="FilepathTextBox"
+                <TextBox Name="FilepathTextBox"
                            Grid.Column="0"
                            Grid.Row="0"
                            Text="{Binding DisplayedFile}"
-                           Style="{StaticResource LongTextBlockStyle}"
+                           Style="{StaticResource LongTextBoxStyle}"
                            TextWrapping="Wrap"
                            TextAlignment="Center"
                            VerticalAlignment="Center" />

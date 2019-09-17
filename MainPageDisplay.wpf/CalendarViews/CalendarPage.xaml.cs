@@ -69,7 +69,7 @@ namespace ChronoCalendar
                 for(int j = 0; j < daysInWeek; j++)
                 {
                     int currentTileIndex = i * daysInWeek + j;
-                    Date day = new Date(viewModel.Date.Date.year, viewModel.Date.Date.month, currentTileIndex + 1);
+                    Date day = new Date(viewModel.Date.Date.Year, viewModel.Date.Date.Month, currentTileIndex + 1);
                     Timeline derivedTimeline = viewModel.TimelineField.GetNotesFromDay(day);
                     CalendarTile tile = new CalendarTile(derivedTimeline);
 

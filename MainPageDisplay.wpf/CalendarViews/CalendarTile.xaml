@@ -19,6 +19,7 @@
                   SelectedIndex="{Binding SelectedNoteIndex}"
                   ItemsSource="{Binding TimelineField}"
                   ItemTemplate="{StaticResource TileItemTemplate}"
+                  Background="BlanchedAlmond"
                   ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                   />
     </StackPanel>

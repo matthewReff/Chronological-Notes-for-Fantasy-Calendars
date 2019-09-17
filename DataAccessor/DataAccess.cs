@@ -160,20 +160,20 @@ namespace ChronoCalendar
         public static string DateToPeriodSeperatedString(Date date)
         {
             string dateString = string.Empty;
-            dateString += date.year.ToString();
+            dateString += date.Year.ToString();
             dateString += ".";
-            dateString += date.month.ToString();
+            dateString += date.Month.ToString();
             dateString += ".";
-            dateString += date.day.ToString();
-            if (date.hour != null)
+            dateString += date.Day.ToString();
+            if (date.Hour != null)
             {
                 dateString += ".";
-                dateString += date.hour.ToString();
+                dateString += date.Hour.ToString();
             }
-            if (date.minute != null)
+            if (date.Minute != null)
             {
                 dateString += ".";
-                dateString += date.minute.ToString();
+                dateString += date.Minute.ToString();
             }
 
             return dateString;
